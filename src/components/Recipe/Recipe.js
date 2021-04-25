@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Recipe({ recipe }) {
-  const { title, image } = recipe;
+function Recipe({ recipe, getRecipeInfo }) {
+  const { title, image, id } = recipe;
+  const [showInfo, setShowInfo] = useState(false);
+  const [recipeInfo, setRecipeInfo] = useState("");
+
+  console.log(getRecipeInfo());
 
   return (
-    <div className="container">
-      <h1>{title}</h1>
-      <img style={{ height: "200px", width: "auto" }} src={image} alt={title} />
+    <div className="recipe-container">
+      <h1 className="recipe-title">{title}</h1>
+      <img className="recipe-image" src={image} alt={title} />
+      <button
+        type="button"
+        className="recipe-button btn btn-primary"
+        onClick={() => setShowInfo(true)}
+      >
+        Show ingredients
+      </button>
     </div>
   );
 }
