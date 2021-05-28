@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Typography from "@material-ui/core/Typography";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 
 const useStyles = makeStyles((theme) => ({
@@ -28,6 +29,10 @@ const useStyles = makeStyles((theme) => ({
 function Recipe({ recipe }) {
   const classes = useStyles();
   const { title, image, sourceUrl, readyInMinutes } = recipe;
+  const [isLiked, setIsLiked] = useState(false);
+  const addToFavs = () => {
+    setIsLiked((prevState) => (prevState = !prevState));
+  };
 
   return (
     <div className="recipe-container">
@@ -50,7 +55,17 @@ function Recipe({ recipe }) {
               </Grid>
               <Grid item>
                 <Typography variant="body2">
-                  <FavoriteBorderOutlinedIcon style={{ cursor: "pointer" }} />
+                  {isLiked ? (
+                    <FavoriteIcon
+                      style={{ cursor: "pointer", color: "green" }}
+                      onClick={() => addToFavs()}
+                    />
+                  ) : (
+                    <FavoriteBorderOutlinedIcon
+                      onClick={() => addToFavs()}
+                      style={{ cursor: "pointer" }}
+                    />
+                  )}
                 </Typography>
               </Grid>
             </Grid>
