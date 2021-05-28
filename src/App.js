@@ -9,6 +9,8 @@ function App() {
     setRecipes(recipeQueryResult);
   };
 
+  console.log(recipes);
+
   return (
     <div className="App">
       <RecipeGetForm getRecipeCallback={getRecipeCallback} />

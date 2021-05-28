@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 
 function RecipeGetForm({ getRecipeCallback }) {
-  const [queryText, setQueryText] = useState("");
+  const [query, setQuery] = useState({
+    text: "",
+    number: 3,
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await getRecipe();
-    setQueryText("");
+    setQuery({ text: "", number: 3 });
   };
 
   const getRecipe = async () => {
     const queryResult = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${queryText}&number=3`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${query.text}&number=${query.number}&addRecipeInformation=true`
     );
     if (queryResult) {
       queryResult
@@ -25,8 +28,11 @@ function RecipeGetForm({ getRecipeCallback }) {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        value={queryText}
-        onChange={(e) => setQueryText(e.target.value)}
+        name="text"
+        value={query.text}
+        onChange={(e) =>
+          setQuery({ ...query, [e.target.name]: e.target.value })
+        }
       />
       <input type="submit" value="Get recipes" />
     </form>
