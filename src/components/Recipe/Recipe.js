@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
     maxWidth: 500,
   },
+  title: {
+    fontWeight: "bold",
+  },
   image: {
     width: 128,
     height: 128,
@@ -23,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
     display: "block",
     maxWidth: "100%",
     maxHeight: "100%",
+  },
+  link: {
+    textDecoration: "none",
+    color: "black",
   },
 }));
 
@@ -37,7 +44,7 @@ function Recipe({ recipe }) {
   return (
     <div className="recipe-container">
       <Paper className={classes.paper}>
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           <Grid item>
             <ButtonBase className={classes.image}>
               <img className={classes.img} alt={title} src={image} />
@@ -46,11 +53,17 @@ function Recipe({ recipe }) {
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1">
+                <Typography
+                  className={classes.title}
+                  gutterBottom
+                  variant="subtitle1"
+                >
                   {title}
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
-                  <a href={sourceUrl}>Recipe source</a>
+                  <a className={classes.link} target="blank" href={sourceUrl}>
+                    Recipe source
+                  </a>
                 </Typography>
               </Grid>
               <Grid item>
