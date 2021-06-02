@@ -7,24 +7,18 @@ const useStyles = makeStyles(() => ({
   root: {
     minWidth: 200,
     justifyContent: "flex-start",
-    alignItems: "center"
+    alignItems: "stretch",
   },
 }));
 
 function RecipeList({ recipes }) {
   const classes = useStyles();
   return (
-    <Grid container spacing={6} direction="row">
+    <Grid container spacing={6} className={classes.root}>
       {recipes.length
         ? recipes.map((recipe) => {
             return (
-              <Grid
-                item
-                className={classes.root}
-                key={recipe.id}
-                xs={12}
-                lg={4}
-              >
+              <Grid item key={recipe.id} xs={12} lg={4}>
                 <Recipe recipe={recipe} />
               </Grid>
             );

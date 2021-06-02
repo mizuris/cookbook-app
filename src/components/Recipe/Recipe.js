@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -15,6 +15,7 @@ import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import RecipeCollapse from "./RecipeCollapse";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Recipe({ recipe }) {
+  const wrapper = useRef();
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
   const {
@@ -46,6 +48,7 @@ function Recipe({ recipe }) {
     readyInMinutes,
     creditsText,
     analyzedInstructions,
+    summary,
   } = recipe;
   console.log(recipe);
 
@@ -61,7 +64,7 @@ function Recipe({ recipe }) {
         title={title}
         subheader={creditsText}
         action={
-          <IconButton>
+          <IconButton disableRipple disableFocusRipple>
             <AccessTimeIcon /> {readyInMinutes}
           </IconButton>
         }
@@ -90,10 +93,8 @@ function Recipe({ recipe }) {
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Preparation:</Typography>
-        </CardContent>
+      <Collapse ref={wrapper} in={expanded} timeout="auto" unmountOnExit>
+        <RecipeCollapse summary={summary} instructions={analyzedInstructions} />
       </Collapse>
     </Card>
   );
