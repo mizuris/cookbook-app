@@ -1,97 +1,101 @@
 import React, { useState } from "react";
+import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import ButtonBase from "@material-ui/core/ButtonBase";
-import Typography from "@material-ui/core/Typography";
-import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+import {
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  CardMedia,
+  IconButton,
+  Typography,
+  Collapse,
+} from "@material-ui/core";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import ShareIcon from "@material-ui/icons/Share";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
-    padding: theme.spacing(2),
-    margin: "auto",
-    maxWidth: 500,
+  root: {
+    width: "100%",
   },
-  title: {
-    fontWeight: "bold",
+  media: {
+    height: 0,
+    paddingTop: "56.25%",
   },
-  image: {
-    width: 128,
-    height: 128,
+  expand: {
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest,
+    }),
   },
-  img: {
-    margin: "auto",
-    display: "block",
-    maxWidth: "100%",
-    maxHeight: "100%",
-  },
-  link: {
-    textDecoration: "none",
-    color: "black",
+  expandOpen: {
+    transform: "rotate(180deg)",
   },
 }));
 
 function Recipe({ recipe }) {
   const classes = useStyles();
-  const { title, image, sourceUrl, readyInMinutes } = recipe;
-  const [isLiked, setIsLiked] = useState(false);
-  const addToFavs = () => {
-    setIsLiked((prevState) => (prevState = !prevState));
+  const [expanded, setExpanded] = useState(false);
+  const {
+    title,
+    image,
+    sourceUrl,
+    readyInMinutes,
+    creditsText,
+    analyzedInstructions,
+  } = recipe;
+  console.log(recipe);
+
+  const handleExpand = () => {
+    setExpanded(!expanded);
   };
 
+  console.log(analyzedInstructions);
+
   return (
-    <div className="recipe-container">
-      <Paper className={classes.paper}>
-        <Grid container spacing={2}>
-          <Grid item>
-            <ButtonBase className={classes.image}>
-              <img className={classes.img} alt={title} src={image} />
-            </ButtonBase>
-          </Grid>
-          <Grid item xs={12} sm container>
-            <Grid item xs container direction="column" spacing={2}>
-              <Grid item xs>
-                <Typography
-                  className={classes.title}
-                  gutterBottom
-                  variant="subtitle1"
-                >
-                  {title}
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  <a className={classes.link} target="blank" href={sourceUrl}>
-                    Recipe source
-                  </a>
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Typography variant="body2">
-                  {isLiked ? (
-                    <FavoriteIcon
-                      style={{ cursor: "pointer", color: "green" }}
-                      onClick={() => addToFavs()}
-                    />
-                  ) : (
-                    <FavoriteBorderOutlinedIcon
-                      onClick={() => addToFavs()}
-                      style={{ cursor: "pointer" }}
-                    />
-                  )}
-                </Typography>
-              </Grid>
-            </Grid>
-            <Grid item>
-              <Typography variant="subtitle1">
-                <AccessTimeIcon />
-                {readyInMinutes}
-              </Typography>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Paper>
-    </div>
+    <Card className={classes.root}>
+      <CardHeader
+        title={title}
+        subheader={creditsText}
+        action={
+          <IconButton>
+            <AccessTimeIcon /> {readyInMinutes}
+          </IconButton>
+        }
+      />
+      <CardMedia className={classes.media} image={image} />
+      <CardContent>
+        <Typography paragraph>Some text to be displayed</Typography>
+      </CardContent>
+      <CardActions disableSpacing>
+        <IconButton aria-label="add to favorites">
+          <FavoriteIcon />
+        </IconButton>
+        <IconButton aria-label="share">
+          <a href={sourceUrl}>
+            <ShareIcon />
+          </a>
+        </IconButton>
+        <IconButton
+          className={clsx(classes.expand, {
+            [classes.expandOpen]: expanded,
+          })}
+          onClick={handleExpand}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+          <ExpandMoreIcon />
+        </IconButton>
+      </CardActions>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <CardContent>
+          <Typography paragraph>Preparation:</Typography>
+        </CardContent>
+      </Collapse>
+    </Card>
   );
 }
 

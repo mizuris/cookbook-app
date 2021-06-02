@@ -1,6 +1,15 @@
 import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(() => ({
+  root: {
+    margin: "50px auto",
+    textAlign: "center",
+  },
+}));
 
 function RecipeGetForm({ getRecipeCallback }) {
+  const classes = useStyles();
   const [query, setQuery] = useState({
     text: "",
     number: 3,
@@ -25,7 +34,7 @@ function RecipeGetForm({ getRecipeCallback }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={classes.root}>
       <input
         type="text"
         name="text"
