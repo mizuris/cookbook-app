@@ -1,21 +1,17 @@
 import React, { useState, useRef } from "react";
+import RecipeCollapse from "./RecipeCollapse";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Card,
   CardActions,
-  CardContent,
   CardHeader,
   CardMedia,
   IconButton,
-  Typography,
   Collapse,
+  Link,
 } from "@material-ui/core";
-import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import RecipeCollapse from "./RecipeCollapse";
+import { Favorite, Share, ExpandMore } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,10 +41,11 @@ function Recipe({ recipe }) {
     title,
     image,
     sourceUrl,
-    readyInMinutes,
     creditsText,
     analyzedInstructions,
     summary,
+    readyInMinutes,
+    aggregateLikes,
   } = recipe;
   console.log(recipe);
 
@@ -60,27 +57,16 @@ function Recipe({ recipe }) {
 
   return (
     <Card className={classes.root}>
-      <CardHeader
-        title={title}
-        subheader={creditsText}
-        action={
-          <IconButton disableRipple disableFocusRipple>
-            <AccessTimeIcon /> {readyInMinutes}
-          </IconButton>
-        }
-      />
+      <CardHeader title={title} subheader={creditsText} />
       <CardMedia className={classes.media} image={image} />
-      <CardContent>
-        <Typography paragraph>Some text to be displayed</Typography>
-      </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+          <Favorite />
         </IconButton>
         <IconButton aria-label="share">
-          <a href={sourceUrl}>
-            <ShareIcon />
-          </a>
+          <Link href={sourceUrl} target="_blank" rel="noopener" color="inherit">
+            <Share />
+          </Link>
         </IconButton>
         <IconButton
           className={clsx(classes.expand, {
@@ -90,11 +76,16 @@ function Recipe({ recipe }) {
           aria-expanded={expanded}
           aria-label="show more"
         >
-          <ExpandMoreIcon />
+          <ExpandMore />
         </IconButton>
       </CardActions>
       <Collapse ref={wrapper} in={expanded} timeout="auto" unmountOnExit>
-        <RecipeCollapse summary={summary} instructions={analyzedInstructions} />
+        <RecipeCollapse
+          summary={summary}
+          instructions={analyzedInstructions}
+          time={readyInMinutes}
+          likes={aggregateLikes}
+        />
       </Collapse>
     </Card>
   );
