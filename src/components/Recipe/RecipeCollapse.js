@@ -31,10 +31,10 @@ function RecipeCollapse({ summary, instructions, time, likes }) {
   return (
     <CardContent>
       <CardActions className={classes.actionField}>
-        <IconButton aria-label="time to preapre deal">
+        <IconButton disabled aria-label="time to preapre deal">
           <AccessTime className={classes.icon} fontSize="small" /> {time}
         </IconButton>
-        <IconButton aria-label="share">
+        <IconButton disabled aria-label="share">
           <ThumbUp className={classes.icon} fontSize="small" /> {likes}
         </IconButton>
       </CardActions>

@@ -17,6 +17,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
   },
+  header: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+  },
   media: {
     height: 0,
     paddingTop: "56.25%",
@@ -57,15 +61,18 @@ function Recipe({ recipe }) {
 
   return (
     <Card className={classes.root}>
-      <CardHeader title={title} subheader={creditsText} />
+      <CardHeader
+        title={<h4 className={classes.header}>{title}</h4>}
+        subheader={<h5>{creditsText}</h5>}
+      />
       <CardMedia className={classes.media} image={image} />
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          <Favorite />
+          <Favorite fontSize="small" />
         </IconButton>
         <IconButton aria-label="share">
           <Link href={sourceUrl} target="_blank" rel="noopener" color="inherit">
-            <Share />
+            <Share fontSize="small" />
           </Link>
         </IconButton>
         <IconButton
