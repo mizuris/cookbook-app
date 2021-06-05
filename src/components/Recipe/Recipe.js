@@ -11,7 +11,8 @@ import {
   Collapse,
   Link,
 } from "@material-ui/core";
-import { Favorite, Share, ExpandMore } from "@material-ui/icons";
+import { Share, ExpandMore } from "@material-ui/icons";
+import RecipeFavoriteButton from "./RecipeFavoriteButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
 function Recipe({ recipe }) {
   const wrapper = useRef();
   const classes = useStyles();
+
   const [expanded, setExpanded] = useState(false);
 
   const handleExpand = () => {
@@ -54,9 +56,10 @@ function Recipe({ recipe }) {
       />
       <CardMedia className={classes.media} image={recipe.image} />
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <RecipeFavoriteButton recipe={recipe} />
+        {/* <IconButton aria-label="add to favorites">
           <Favorite fontSize="small" />
-        </IconButton>
+        </IconButton> */}
         <IconButton aria-label="share">
           <Link
             href={recipe.sourceUrl}

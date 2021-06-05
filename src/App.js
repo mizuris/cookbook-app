@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "./App.scss";
+import FavoritesList from "./components/FavoritesList/FavoritesList";
 import RecipeGetForm from "./components/RecipeGetForm/RecipeGetForm";
 import RecipeList from "./components/RecipeList/RecipeList";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
+
   const getRecipeCallback = (recipeQueryResult) => {
     setRecipes(recipeQueryResult);
   };
@@ -13,7 +15,7 @@ function App() {
     <div className="App">
       <RecipeGetForm getRecipeCallback={getRecipeCallback} />
       <RecipeList recipes={recipes} />
-      {/* <FavoritesList /> */}
+      <FavoritesList />
     </div>
   );
 }
