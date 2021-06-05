@@ -41,37 +41,29 @@ function Recipe({ recipe }) {
   const wrapper = useRef();
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
-  const {
-    title,
-    image,
-    sourceUrl,
-    creditsText,
-    analyzedInstructions,
-    summary,
-    readyInMinutes,
-    aggregateLikes,
-  } = recipe;
-  console.log(recipe);
 
   const handleExpand = () => {
     setExpanded(!expanded);
   };
 
-  console.log(analyzedInstructions);
-
   return (
     <Card className={classes.root}>
       <CardHeader
-        title={<h4 className={classes.header}>{title}</h4>}
-        subheader={<h5>{creditsText}</h5>}
+        title={<h4 className={classes.header}>{recipe.title}</h4>}
+        subheader={<h5>{recipe.creditsText}</h5>}
       />
-      <CardMedia className={classes.media} image={image} />
+      <CardMedia className={classes.media} image={recipe.image} />
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <Favorite fontSize="small" />
         </IconButton>
         <IconButton aria-label="share">
-          <Link href={sourceUrl} target="_blank" rel="noopener" color="inherit">
+          <Link
+            href={recipe.sourceUrl}
+            target="_blank"
+            rel="noopener"
+            color="inherit"
+          >
             <Share fontSize="small" />
           </Link>
         </IconButton>
@@ -88,10 +80,10 @@ function Recipe({ recipe }) {
       </CardActions>
       <Collapse ref={wrapper} in={expanded} timeout="auto" unmountOnExit>
         <RecipeCollapse
-          summary={summary}
-          instructions={analyzedInstructions}
-          time={readyInMinutes}
-          likes={aggregateLikes}
+          summary={recipe.summary}
+          instructions={recipe.analyzedInstructions}
+          time={recipe.readyInMinutes}
+          likes={recipe.aggregateLikes}
         />
       </Collapse>
     </Card>

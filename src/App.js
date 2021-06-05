@@ -13,6 +13,7 @@ function App() {
     <div className="App">
       <RecipeGetForm getRecipeCallback={getRecipeCallback} />
       <RecipeList recipes={recipes} />
+      {/* <FavoritesList /> */}
     </div>
   );
 }
