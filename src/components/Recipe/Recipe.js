@@ -57,9 +57,6 @@ function Recipe({ recipe }) {
       <CardMedia className={classes.media} image={recipe.image} />
       <CardActions disableSpacing>
         <RecipeFavoriteButton recipe={recipe} />
-        {/* <IconButton aria-label="add to favorites">
-          <Favorite fontSize="small" />
-        </IconButton> */}
         <IconButton aria-label="share">
           <Link
             href={recipe.sourceUrl}

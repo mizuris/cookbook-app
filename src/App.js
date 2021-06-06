@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.scss";
-import FavoritesList from "./components/FavoritesList/FavoritesList";
+import FavoritesModule from "./components/FavoritesList/FavoritesModule";
 import RecipeGetForm from "./components/RecipeGetForm/RecipeGetForm";
 import RecipeList from "./components/RecipeList/RecipeList";
 
@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       <RecipeGetForm getRecipeCallback={getRecipeCallback} />
       <RecipeList recipes={recipes} />
-      <FavoritesList />
+      <FavoritesModule />
     </div>
   );
 }

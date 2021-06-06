@@ -7,7 +7,7 @@ function RecipeFavoriteButton({ recipe }) {
   const dispatch = useDispatch();
   const handleClick = () =>
     dispatch({
-      type: "ADD_TO_FAVORITES",
+      type: "TOGGLE_FAVORITES",
       payload: recipe,
     });
 
