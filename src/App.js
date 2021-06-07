@@ -1,21 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.scss";
-import FavoritesModule from "./components/FavoritesList/FavoritesModule";
+import FavoritesList from "./components/Favorites/FavoritesList";
 import RecipeGetForm from "./components/RecipeGetForm/RecipeGetForm";
 import RecipeList from "./components/RecipeList/RecipeList";
 
 function App() {
-  const [recipes, setRecipes] = useState([]);
-
-  const getRecipeCallback = (recipeQueryResult) => {
-    setRecipes(recipeQueryResult);
-  };
-
   return (
     <div className="App">
-      <RecipeGetForm getRecipeCallback={getRecipeCallback} />
-      <RecipeList recipes={recipes} />
-      <FavoritesModule />
+      <FavoritesList />
+      <main className="App-container">
+        <RecipeGetForm />
+        <RecipeList />
+      </main>
     </div>
   );
 }

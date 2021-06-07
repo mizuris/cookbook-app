@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import IconButton from "@material-ui/core/IconButton";
-import { Favorite } from "@material-ui/icons";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 
 function RecipeFavoriteButton({ recipe }) {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ function RecipeFavoriteButton({ recipe }) {
 
   return (
     <IconButton onClick={handleClick} aria-label="add to favorites">
-      <Favorite fontSize="small" />
+      <FavoriteIcon fontSize="small" />
     </IconButton>
   );
 }
