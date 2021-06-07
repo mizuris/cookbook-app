@@ -6,13 +6,13 @@ import RecipeList from "./components/RecipeList/RecipeList";
 
 function App() {
   return (
-    <div className="App">
-      <FavoritesList />
-      <main className="App-container">
+    <main className="App">
+      <div className="App-container">
+        <FavoritesList />
         <RecipeGetForm />
         <RecipeList />
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
 
