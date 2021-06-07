@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, TextField, Grid } from "@material-ui/core";
 
@@ -8,8 +9,10 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function RecipeGetForm({ getRecipeCallback }) {
+function RecipeGetForm() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
   const [query, setQuery] = useState({
     text: "",
     number: 3,
@@ -28,7 +31,12 @@ function RecipeGetForm({ getRecipeCallback }) {
     if (queryResult) {
       queryResult
         .json()
-        .then((data) => getRecipeCallback(data.results))
+        .then((data) =>
+          dispatch({
+            type: "GET_RECIPES",
+            payload: data.results,
+          })
+        )
         .catch((err) => console.log(err));
     }
   };
