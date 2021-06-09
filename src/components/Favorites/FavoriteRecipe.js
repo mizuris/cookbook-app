@@ -9,6 +9,7 @@ import {
   Avatar,
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
+import ShareIcon from "@material-ui/icons/Share";
 
 const useStyles = makeStyles(() => ({
   text: {
@@ -35,9 +36,12 @@ function FavoriteRecipe({ recipe }) {
       <ListItemText
         className={classes.text}
         primary={recipe.title}
-        secondary={recipe.creditsText}
+        secondary={recipe.sourceName}
       />
       <ListItemSecondaryAction>
+        <IconButton href={recipe.sourceUrl} rel="noopener" target="_blank">
+          <ShareIcon />
+        </IconButton>
         <IconButton edge="end" aria-label="delete" onClick={handleDelete}>
           <DeleteIcon />
         </IconButton>
