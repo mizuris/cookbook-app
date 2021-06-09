@@ -3,16 +3,18 @@ import "./App.scss";
 import FavoritesList from "./components/Favorites/FavoritesList";
 import RecipeGetForm from "./components/RecipeGetForm/RecipeGetForm";
 import RecipeList from "./components/RecipeList/RecipeList";
+import TopBar from "./components/TopBar/TopBar";
 
 function App() {
   return (
-    <div className="App">
-      <FavoritesList />
-      <main className="App-container">
+    <main className="App">
+      <TopBar />
+      <div className="App-container">
+        <FavoritesList />
         <RecipeGetForm />
         <RecipeList />
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
 

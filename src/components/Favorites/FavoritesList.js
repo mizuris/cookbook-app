@@ -10,7 +10,7 @@ function FavoritesList() {
       {favorites.length
         ? favorites.map((recipe) => {
             return (
-              <ListItem key={recipe.id}>
+              <ListItem alignItems="flex-start" divider key={recipe.id}>
                 <FavoriteRecipe recipe={recipe} />
               </ListItem>
             );

@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   ListItemAvatar,
   ListItemText,
@@ -7,11 +8,19 @@ import {
   IconButton,
   Avatar,
 } from "@material-ui/core";
-import ShareIcon from "@material-ui/icons/Share";
 import DeleteIcon from "@material-ui/icons/Delete";
+import ShareIcon from "@material-ui/icons/Share";
+
+const useStyles = makeStyles(() => ({
+  text: {
+    maxWidth: "40%",
+  },
+}));
 
 function FavoriteRecipe({ recipe }) {
+  const classes = useStyles();
   const dispatch = useDispatch();
+
   const handleDelete = () => {
     dispatch({
       type: "REMOVE_FROM_FAVORITES",
@@ -24,15 +33,13 @@ function FavoriteRecipe({ recipe }) {
       <ListItemAvatar>
         <Avatar src={recipe.image} alt={recipe.title} />
       </ListItemAvatar>
-      <ListItemText primary={recipe.title} secondary={recipe.creditsText} />
+      <ListItemText
+        className={classes.text}
+        primary={recipe.title}
+        secondary={recipe.sourceName}
+      />
       <ListItemSecondaryAction>
-        <IconButton
-          edge="end"
-          aria-label="share"
-          href={recipe.sourceUrl}
-          target="_blank"
-          rel="noopener"
-        >
+        <IconButton href={recipe.sourceUrl} rel="noopener" target="_blank">
           <ShareIcon />
         </IconButton>
         <IconButton edge="end" aria-label="delete" onClick={handleDelete}>
