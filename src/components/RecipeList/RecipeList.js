@@ -14,16 +14,18 @@ const useStyles = makeStyles(() => ({
 
 function RecipeList() {
   const recipes = useSelector((state) => state.recipes);
+  const favorites = useSelector((state) => state.favorites);
   const classes = useStyles();
+
   return (
     <>
       {recipes.length ? <h1>Results</h1> : ""}
-      <Grid container spacing={6} className={classes.root}>
+      <Grid container spacing={4} className={classes.root}>
         {recipes.length
           ? recipes.map((recipe) => {
               return (
                 <Grid item key={recipe.id} xs={12} md={6} lg={4}>
-                  <Recipe recipe={recipe} />
+                  <Recipe recipe={recipe} favorites={favorites} />
                 </Grid>
               );
             })
