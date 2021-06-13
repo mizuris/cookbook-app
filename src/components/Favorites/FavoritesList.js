@@ -3,8 +3,9 @@ import { useSelector } from "react-redux";
 import { List, ListItem } from "@material-ui/core";
 import FavoriteRecipe from "./FavoriteRecipe";
 
-function FavoritesList({ favListRef }) {
+function FavoritesList({ favListRef, windowWidth }) {
   const favorites = useSelector((state) => state.favorites);
+
   return (
     <>
       {favorites.length ? <h1>Favorites</h1> : ""}
