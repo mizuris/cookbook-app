@@ -21,8 +21,8 @@ function RecipeFavoriteButton({ recipe, isFavorite }) {
   return (
     <IconButton onClick={handleClick} aria-label="add to favorites">
       <FavoriteIcon
-        color={isFavorite ? "secondary" : "inherit"}
         fontSize="small"
+        color={isFavorite ? "secondary" : "inherit"}
       />
     </IconButton>
   );

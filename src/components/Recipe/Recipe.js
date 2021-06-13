@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import RecipeCollapse from "./RecipeCollapse";
+import { useSelector } from "react-redux";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -38,8 +39,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Recipe({ recipe, favorites }) {
+function Recipe({ recipe }) {
   const classes = useStyles();
+  const favorites = useSelector((state) => state.favorites);
 
   const [isFavorite, setIsFavorite] = useState(false);
   const [expanded, setExpanded] = useState(false);
@@ -53,16 +55,11 @@ function Recipe({ recipe, favorites }) {
 
   // Checking if recipe is favorite when rendered
   useEffect(() => {
-    const checkIfIsFavorite = (id) => {
-      for (let i = 0; favorites.length > 1; i++) {
-        if (id === favorites[i].id) {
-          return true;
-        }
-        return false;
-      }
-    };
-    setIsFavorite(checkIfIsFavorite(recipe.id));
-  }, [favorites, recipe.id]);
+    console.log(favorites);
+    favorites.map((favorite) =>
+      favorite.id === recipe.id ? setIsFavorite(true) : setIsFavorite(false)
+    );
+  }, [recipe, favorites]);
 
   return (
     <Card className={classes.root}>
