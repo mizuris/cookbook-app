@@ -1,4 +1,7 @@
 import { createStore } from "redux";
 import reducer from "./reducer";
+import { loadState } from "./localStorage";
 
-export const store = createStore(reducer);
+const favState = loadState();
+
+export const store = createStore(reducer, favState);

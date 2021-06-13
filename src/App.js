@@ -12,6 +12,7 @@ function App() {
       behavior: "smooth",
       block: "center",
     });
+
   return (
     <div className="App">
       <TopBar scrollIntoFavs={scrollIntoFavs} />
@@ -19,7 +20,6 @@ function App() {
         <RecipeGetForm />
         <main className="App-content">
           <RecipeList />
-          {/* <div ref={favListRef}></div> */}
           <FavoritesList favListRef={favListRef} />
         </main>
       </div>

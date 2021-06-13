@@ -14,7 +14,6 @@ const useStyles = makeStyles(() => ({
 
 function RecipeList() {
   const recipes = useSelector((state) => state.recipes);
-  const favorites = useSelector((state) => state.favorites);
   const classes = useStyles();
 
   return (
@@ -25,7 +24,7 @@ function RecipeList() {
           ? recipes.map((recipe) => {
               return (
                 <Grid item key={recipe.id} xs={12} md={6} lg={4}>
-                  <Recipe recipe={recipe} favorites={favorites} />
+                  <Recipe recipe={recipe} />
                 </Grid>
               );
             })
