@@ -1,5 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import RecipeCollapse from "./RecipeCollapse";
+import { useSelector } from "react-redux";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -39,14 +40,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Recipe({ recipe }) {
-  const wrapper = useRef();
   const classes = useStyles();
+  const favorites = useSelector((state) => state.favorites);
 
+  const [isFavorite, setIsFavorite] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
+  const wrapper = useRef();
+
+  // Expand handler for recipe details
   const handleExpand = () => {
     setExpanded(!expanded);
   };
+
+  // Checking if recipe is favorite when rendered
+  useEffect(() => {
+    console.log(favorites);
+    favorites.map((favorite) =>
+      favorite.id === recipe.id ? setIsFavorite(true) : setIsFavorite(false)
+    );
+  }, [recipe, favorites]);
 
   return (
     <Card className={classes.root}>
@@ -56,7 +69,7 @@ function Recipe({ recipe }) {
       />
       <CardMedia className={classes.media} image={recipe.image} />
       <CardActions disableSpacing>
-        <RecipeFavoriteButton recipe={recipe} />
+        <RecipeFavoriteButton recipe={recipe} isFavorite={isFavorite} />
         <IconButton aria-label="share">
           <Link
             href={recipe.sourceUrl}

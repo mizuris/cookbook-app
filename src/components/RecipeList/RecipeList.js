@@ -15,10 +15,11 @@ const useStyles = makeStyles(() => ({
 function RecipeList() {
   const recipes = useSelector((state) => state.recipes);
   const classes = useStyles();
+
   return (
     <>
       {recipes.length ? <h1>Results</h1> : ""}
-      <Grid container spacing={6} className={classes.root}>
+      <Grid container spacing={4} className={classes.root}>
         {recipes.length
           ? recipes.map((recipe) => {
               return (

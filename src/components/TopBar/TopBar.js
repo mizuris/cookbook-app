@@ -29,7 +29,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function TopBar() {
+function TopBar({ scrollIntoFavs }) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -45,6 +45,7 @@ function TopBar() {
           color="secondary"
           aria-label="add"
           className={classes.fabButton}
+          onClick={() => scrollIntoFavs()}
         >
           <Favorite />
         </Fab>
