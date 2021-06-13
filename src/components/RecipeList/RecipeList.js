@@ -16,17 +16,20 @@ function RecipeList() {
   const recipes = useSelector((state) => state.recipes);
   const classes = useStyles();
   return (
-    <Grid container spacing={6} className={classes.root}>
-      {recipes.length
-        ? recipes.map((recipe) => {
-            return (
-              <Grid item key={recipe.id} xs={12} lg={4}>
-                <Recipe recipe={recipe} />
-              </Grid>
-            );
-          })
-        : ""}
-    </Grid>
+    <>
+      {recipes.length ? <h1>Results</h1> : ""}
+      <Grid container spacing={6} className={classes.root}>
+        {recipes.length
+          ? recipes.map((recipe) => {
+              return (
+                <Grid item key={recipe.id} xs={12} md={6} lg={4}>
+                  <Recipe recipe={recipe} />
+                </Grid>
+              );
+            })
+          : ""}
+      </Grid>
+    </>
   );
 }
 

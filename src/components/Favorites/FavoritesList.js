@@ -6,17 +6,20 @@ import FavoriteRecipe from "./FavoriteRecipe";
 function FavoritesList() {
   const favorites = useSelector((state) => state.favorites);
   return (
-    <List>
-      {favorites.length
-        ? favorites.map((recipe) => {
-            return (
-              <ListItem alignItems="flex-start" divider key={recipe.id}>
-                <FavoriteRecipe recipe={recipe} />
-              </ListItem>
-            );
-          })
-        : ""}
-    </List>
+    <>
+      {favorites.length ? <h1>Favorites</h1> : ""}
+      <List>
+        {favorites.length
+          ? favorites.map((recipe) => {
+              return (
+                <ListItem alignItems="flex-start" divider key={recipe.id}>
+                  <FavoriteRecipe recipe={recipe} />
+                </ListItem>
+              );
+            })
+          : ""}
+      </List>
+    </>
   );
 }
 

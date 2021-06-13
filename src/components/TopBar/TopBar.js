@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar, Fab, IconButton } from "@material-ui/core";
 import { Favorite, MoreVert } from "@material-ui/icons";
 import TopBarMenu from "./TopBarMenu";
-import logo_white_horiz from "../../assets/icon/cookbook_icon_white.png";
+import TopBarLogo from "./TopBarLogo";
 
 const useStyles = makeStyles(() => ({
   appBar: {
@@ -15,9 +15,6 @@ const useStyles = makeStyles(() => ({
   toolbar: {
     width: "90%",
     margin: "0 auto",
-  },
-  logo: {
-    maxHeight: 60,
   },
   fabButton: {
     position: "absolute",
@@ -40,16 +37,15 @@ function TopBar() {
   const handleCloseMenu = () => setAnchorEl(null);
 
   return (
-    <AppBar position="fixed" color="primary" className={classes.appBar}>
+    <AppBar position="fixed" className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
-        <IconButton>
-          <img
-            className={classes.logo}
-            src={logo_white_horiz}
-            alt="cookbook logo"
-          />
-        </IconButton>
-        <Fab color="secondary" aria-label="add" className={classes.fabButton}>
+        <TopBarLogo />
+        <Fab
+          size="medium"
+          color="secondary"
+          aria-label="add"
+          className={classes.fabButton}
+        >
           <Favorite />
         </Fab>
         <div className={classes.grow} />
