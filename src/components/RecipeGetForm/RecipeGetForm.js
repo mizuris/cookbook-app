@@ -44,7 +44,7 @@ function RecipeGetForm() {
   return (
     <form onSubmit={handleSubmit} className={classes.root}>
       <Grid container spacing={4}>
-        <Grid item xs={12} sm={7}>
+        <Grid item xs={12} sm={9}>
           <TextField
             fullWidth
             label="Search recipes"
@@ -56,7 +56,7 @@ function RecipeGetForm() {
             }
           />
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={2}>
           <TextField
             fullWidth
             label="Quantity"
@@ -68,7 +68,7 @@ function RecipeGetForm() {
             }
           />
         </Grid>
-        <Grid item xs={12} sm={2}>
+        <Grid item xs={12} sm={1}>
           <Button variant="contained" color="primary" type="submit">
             Find
           </Button>
