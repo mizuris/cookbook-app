@@ -54,12 +54,16 @@ function Recipe({ recipe }) {
   };
 
   // Checking if recipe is favorite when rendered
+  // useEffect(() => {
+  //   console.log(favorites);
+  //   favorites.map((favorite) =>
+  //     favorite.id === recipe.id ? setIsFavorite(true) : setIsFavorite(false)
+  //   );
+  // }, [recipe, favorites]);
+
   useEffect(() => {
-    console.log(favorites);
-    favorites.map((favorite) =>
-      favorite.id === recipe.id ? setIsFavorite(true) : setIsFavorite(false)
-    );
-  }, [recipe, favorites]);
+    favorites.includes(recipe) ? setIsFavorite(true) : setIsFavorite(false);
+  }, [favorites, recipe]);
 
   return (
     <Card className={classes.root}>
