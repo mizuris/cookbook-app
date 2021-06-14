@@ -1,29 +1,22 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { makeStyles } from "@material-ui/core/styles";
 import { Button, TextField, Grid } from "@material-ui/core";
 
-const useStyles = makeStyles(() => ({
-  root: {
-    margin: "50px auto",
-  },
-}));
-
 function RecipeGetForm() {
-  const classes = useStyles();
   const dispatch = useDispatch();
-
   const [query, setQuery] = useState({
     text: "",
     number: 1,
   });
 
+  // Submiting form and reseting input values to default state
   const handleSubmit = async (e) => {
     e.preventDefault();
     await getRecipe();
     setQuery({ text: "", number: 1 });
   };
 
+  // Calling API from endpoint and saving it to redux
   const getRecipe = async () => {
     const queryResult = await fetch(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${query.text}&number=${query.number}&addRecipeInformation=true`
@@ -42,7 +35,7 @@ function RecipeGetForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={classes.root}>
+    <form onSubmit={handleSubmit}>
       <Grid container spacing={4}>
         <Grid item xs={12} sm={9}>
           <TextField
@@ -62,6 +55,7 @@ function RecipeGetForm() {
             label="Quantity"
             type="number"
             name="number"
+            inputProps={{ min: 1, max: 20 }}
             value={query.number}
             onChange={(e) =>
               setQuery({ ...query, [e.target.name]: e.target.value })
@@ -69,7 +63,7 @@ function RecipeGetForm() {
           />
         </Grid>
         <Grid item xs={12} sm={1}>
-          <Button variant="contained" color="primary" type="submit">
+          <Button variant="contained" color="secondary" type="submit">
             Find
           </Button>
         </Grid>

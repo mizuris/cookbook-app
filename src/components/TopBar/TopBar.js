@@ -29,17 +29,18 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function TopBar({ scrollIntoFavs }) {
+function TopBar({ scrollIntoFavs, scrollTop }) {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState(null);
 
+  // State and functions for menu component
+  const [anchorEl, setAnchorEl] = useState(null);
   const handleOpenMenu = (e) => setAnchorEl(e.target);
   const handleCloseMenu = () => setAnchorEl(null);
 
   return (
     <AppBar position="fixed" className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
-        <TopBarLogo />
+        <TopBarLogo handleScroll={scrollTop} />
         <Fab
           size="medium"
           color="secondary"

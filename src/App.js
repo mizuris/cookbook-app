@@ -13,6 +13,14 @@ function App() {
     window.addEventListener("resize", () => setWidth(windowWidth));
   }, [windowWidth]);
 
+  const topRef = useRef(null);
+  const scrollTop = () =>
+    topRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
+  // Scroll to favorites when clicking TopBar Favorite Fab
   const favListRef = useRef(null);
   const scrollIntoFavs = () =>
     favListRef.current.scrollIntoView({
@@ -21,8 +29,12 @@ function App() {
     });
 
   return (
-    <div className="App">
-      <TopBar scrollIntoFavs={scrollIntoFavs} windowWidth={width} />
+    <div className="App" ref={topRef}>
+      <TopBar
+        scrollIntoFavs={scrollIntoFavs}
+        scrollTop={scrollTop}
+        windowWidth={width}
+      />
       <div className="App-container">
         <RecipeGetForm />
         <main className="App-content">

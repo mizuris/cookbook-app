@@ -6,6 +6,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 function RecipeFavoriteButton({ recipe, isFavorite }) {
   const dispatch = useDispatch();
 
+  // Choosing proper action dispatch if recipe isFavorite or if !isFavorite
   const handleClick = () => {
     isFavorite
       ? dispatch({

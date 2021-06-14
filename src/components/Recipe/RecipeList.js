@@ -1,25 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Recipe from "./Recipe";
-import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
-
-const useStyles = makeStyles(() => ({
-  root: {
-    minWidth: 200,
-    justifyContent: "flex-start",
-    alignItems: "stretch",
-  },
-}));
 
 function RecipeList() {
   const recipes = useSelector((state) => state.recipes);
-  const classes = useStyles();
 
   return (
     <>
       {recipes.length ? <h1>Results</h1> : ""}
-      <Grid container spacing={4} className={classes.root}>
+      <Grid container spacing={4} justify="flex-start" alignItems="stretch">
         {recipes.length
           ? recipes.map((recipe) => {
               return (
