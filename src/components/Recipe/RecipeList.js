@@ -1,6 +1,6 @@
 import React from "react";
-import Recipe from "./Recipe";
 import { useSelector } from "react-redux";
+import Recipe from "./Recipe";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 
