@@ -15,13 +15,13 @@ function RecipeGetForm() {
 
   const [query, setQuery] = useState({
     text: "",
-    number: 3,
+    number: 1,
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await getRecipe();
-    setQuery({ text: "", number: 3 });
+    setQuery({ text: "", number: 1 });
   };
 
   const getRecipe = async () => {

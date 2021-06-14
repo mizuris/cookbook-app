@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
   list: {
     padding: theme.spacing(1),
   },
+  listBlock: {
+    marginBottom: theme.spacing(1),
+  },
 }));
 
 function RecipeCollapse({ summary, instructions, time, likes }) {
