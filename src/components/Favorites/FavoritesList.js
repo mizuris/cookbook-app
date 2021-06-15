@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { List, ListItem } from "@material-ui/core";
 import FavoriteRecipe from "./FavoriteRecipe";
 
-function FavoritesList({ favListRef, windowWidth }) {
+function FavoritesList({ favListRef }) {
   const favorites = useSelector((state) => state.favorites);
 
   return (

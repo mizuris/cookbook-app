@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import "./App.css";
 import FavoritesList from "./components/Favorites/FavoritesList";
 import RecipeGetForm from "./components/RecipeGetForm/RecipeGetForm";
@@ -6,13 +6,6 @@ import RecipeList from "./components/Recipe/RecipeList";
 import TopBar from "./components/TopBar/TopBar";
 
 function App() {
-  const windowWidth = window.innerWidth;
-  const [width, setWidth] = useState(windowWidth);
-
-  useEffect(() => {
-    window.addEventListener("resize", () => setWidth(windowWidth));
-  }, [windowWidth]);
-
   const topRef = useRef(null);
   const scrollTop = () =>
     topRef.current.scrollIntoView({
@@ -33,13 +26,12 @@ function App() {
       <TopBar
         scrollIntoFavs={scrollIntoFavs}
         scrollTop={scrollTop}
-        windowWidth={width}
       />
       <div className="App-container">
         <RecipeGetForm />
         <main className="App-content">
           <RecipeList />
-          <FavoritesList favListRef={favListRef} windowWidth={width} />
+          <FavoritesList favListRef={favListRef} />
         </main>
       </div>
     </div>
