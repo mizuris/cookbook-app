@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button, TextField, Grid } from "@material-ui/core";
 
-function RecipeGetForm() {
+function RecipeGetForm({ changeLoadingState }) {
   const dispatch = useDispatch();
   const [query, setQuery] = useState({
     text: "",
@@ -18,11 +18,13 @@ function RecipeGetForm() {
 
   // Calling API from endpoint and saving it to redux
   const getRecipe = async () => {
+    changeLoadingState(true);
     const queryResult = await fetch(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${query.text}&number=${query.number}&addRecipeInformation=true`
     );
     if (queryResult) {
-      queryResult
+      changeLoadingState(true);
+      await queryResult
         .json()
         .then((data) =>
           dispatch({
@@ -30,7 +32,11 @@ function RecipeGetForm() {
             payload: data.results,
           })
         )
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          changeLoadingState(false);
+        });
+      changeLoadingState(false);
     }
   };
 

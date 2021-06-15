@@ -4,12 +4,12 @@ import CardHeader from "@material-ui/core/CardHeader";
 
 const useStyles = makeStyles((theme) => ({
   header: {
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2),
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
   },
 }));
 
-function RecipeHeader({ title, subtitle, recipeTopRef }) {
+function RecipeHeader({ title, subtitle }) {
   const classes = useStyles();
   return (
     <CardHeader

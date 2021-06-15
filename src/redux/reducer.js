@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
   favorites: [],
   recipes: [],
+  loading: false,
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -26,6 +27,16 @@ const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         recipes: action.payload,
+      };
+    case "SET_LOADING_ON":
+      return {
+        ...state,
+        loading: true,
+      };
+    case "SET_LOADING_OFF":
+      return {
+        ...state,
+        loading: false,
       };
     default:
       return state;
