@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import RecipeHeader from "./RecipeHeader";
 import RecipeImage from "./RecipeImage";
 import RecipeShare from "./RecipeShare";
@@ -13,8 +13,6 @@ function Recipe({ recipe }) {
 
   const [isFavorite, setIsFavorite] = useState(false);
   const [expanded, setExpanded] = useState(false);
-
-  const wrapper = useRef();
 
   // Expand handler for recipe details
   const handleExpand = () => {
@@ -35,7 +33,7 @@ function Recipe({ recipe }) {
         <RecipeShare sourceUrl={recipe.sourceUrl} />
         <RecipeExpand expanded={expanded} handleExpand={handleExpand} />
       </CardActions>
-      <Collapse ref={wrapper} in={expanded} timeout="auto" unmountOnExit>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
         <RecipeCollapse
           summary={recipe.summary}
           instructions={recipe.analyzedInstructions}

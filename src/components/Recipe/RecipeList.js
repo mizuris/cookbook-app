@@ -8,7 +8,7 @@ function RecipeList() {
 
   return (
     <>
-      {recipes.length ? <h1>Results</h1> : ""}
+      {recipes.length ? <h1>Your recipes</h1> : ""}
       <Grid container spacing={4} justify="flex-start" alignItems="stretch">
         {recipes.length
           ? recipes.map((recipe) => {

@@ -1,7 +1,6 @@
 import React from "react";
-import Menu from "@material-ui/core/Menu";
+import { Menu, MenuItem, IconButton } from "@material-ui/core";
 import { Close, Facebook, LinkedIn, GitHub } from "@material-ui/icons";
-import TopBarMenuIcon from "./TopBarMenuIcon";
 
 function TopBarMenu({ anchorEl, handleCloseMenu }) {
   return (
@@ -12,27 +11,41 @@ function TopBarMenu({ anchorEl, handleCloseMenu }) {
       open={Boolean(anchorEl)}
       onClose={handleCloseMenu}
     >
-      <TopBarMenuIcon handleCloseMenu={handleCloseMenu}>
-        <Close />
-      </TopBarMenuIcon>
-      <TopBarMenuIcon
-        href="https://www.facebook.com/piotr.bator.33/"
-        handleCloseMenu={handleCloseMenu}
-      >
-        <Facebook />
-      </TopBarMenuIcon>
-      <TopBarMenuIcon
-        href="https://www.linkedin.com/in/piotr-b%C4%85tor-b4b95620a/"
-        handleCloseMenu={handleCloseMenu}
-      >
-        <LinkedIn />
-      </TopBarMenuIcon>
-      <TopBarMenuIcon
-        href="https://github.com/mizuris/meal-planner-react"
-        handleCloseMenu={handleCloseMenu}
-      >
-        <GitHub />
-      </TopBarMenuIcon>
+      <MenuItem onClick={handleCloseMenu}>
+        <IconButton color="inherit" rel="noopener" target="_blank">
+          <Close />
+        </IconButton>
+      </MenuItem>
+      <MenuItem onClick={handleCloseMenu}>
+        <IconButton
+          href="https://www.facebook.com/piotr.bator.33/"
+          color="inherit"
+          rel="noopener"
+          target="_blank"
+        >
+          <Facebook />
+        </IconButton>
+      </MenuItem>
+      <MenuItem onClick={handleCloseMenu}>
+        <IconButton
+          href="https://www.linkedin.com/in/piotr-b%C4%85tor-b4b95620a/"
+          color="inherit"
+          rel="noopener"
+          target="_blank"
+        >
+          <LinkedIn />
+        </IconButton>
+      </MenuItem>
+      <MenuItem onClick={handleCloseMenu}>
+        <IconButton
+          href="https://github.com/mizuris/meal-planner-react"
+          color="inherit"
+          rel="noopener"
+          target="_blank"
+        >
+          <GitHub />
+        </IconButton>
+      </MenuItem>
     </Menu>
   );
 }

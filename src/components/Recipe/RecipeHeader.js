@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function RecipeHeader({ title, subtitle }) {
+function RecipeHeader({ title, subtitle, recipeTopRef }) {
   const classes = useStyles();
   return (
     <CardHeader

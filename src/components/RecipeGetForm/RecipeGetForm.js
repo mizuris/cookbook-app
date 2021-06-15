@@ -35,7 +35,7 @@ function RecipeGetForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form style={{ marginBottom: "5%" }} onSubmit={handleSubmit}>
       <Grid container spacing={4}>
         <Grid item xs={12} sm={9}>
           <TextField
