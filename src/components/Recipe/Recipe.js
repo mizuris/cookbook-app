@@ -1,46 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
+import RecipeHeader from "./RecipeHeader";
+import RecipeImage from "./RecipeImage";
+import RecipeShare from "./RecipeShare";
+import RecipeExpand from "./RecipeExpand";
 import RecipeCollapse from "./RecipeCollapse";
 import { useSelector } from "react-redux";
-import clsx from "clsx";
-import { makeStyles } from "@material-ui/core/styles";
-import {
-  Card,
-  CardActions,
-  CardHeader,
-  CardMedia,
-  IconButton,
-  Collapse,
-  Link,
-} from "@material-ui/core";
-import { Share, ExpandMore } from "@material-ui/icons";
+import { Card, CardActions, Collapse } from "@material-ui/core";
 import RecipeFavoriteButton from "./RecipeFavoriteButton";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-  },
-  header: {
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2),
-  },
-  media: {
-    height: 0,
-    paddingTop: "56.25%",
-  },
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: "rotate(180deg)",
-  },
-}));
-
 function Recipe({ recipe }) {
-  const classes = useStyles();
   const favorites = useSelector((state) => state.favorites);
 
   const [isFavorite, setIsFavorite] = useState(false);
@@ -59,34 +27,13 @@ function Recipe({ recipe }) {
   }, [favorites, recipe]);
 
   return (
-    <Card className={classes.root}>
-      <CardHeader
-        title={<h4 className={classes.header}>{recipe.title}</h4>}
-        subheader={<h5>{recipe.creditsText}</h5>}
-      />
-      <CardMedia className={classes.media} image={recipe.image} />
+    <Card raised={expanded} style={{ width: "100%" }}>
+      <RecipeHeader title={recipe.title} subtitle={recipe.creditsText} />
+      <RecipeImage image={recipe.image} />
       <CardActions disableSpacing>
         <RecipeFavoriteButton recipe={recipe} isFavorite={isFavorite} />
-        <IconButton aria-label="share">
-          <Link
-            href={recipe.sourceUrl}
-            target="_blank"
-            rel="noopener"
-            color="inherit"
-          >
-            <Share fontSize="small" />
-          </Link>
-        </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpand}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMore />
-        </IconButton>
+        <RecipeShare sourceUrl={recipe.sourceUrl} />
+        <RecipeExpand expanded={expanded} handleExpand={handleExpand} />
       </CardActions>
       <Collapse ref={wrapper} in={expanded} timeout="auto" unmountOnExit>
         <RecipeCollapse

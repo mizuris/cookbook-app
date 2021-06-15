@@ -46,7 +46,7 @@ function TopBar({ scrollIntoFavs, scrollTop }) {
           color="secondary"
           aria-label="add"
           className={classes.fabButton}
-          onClick={() => scrollIntoFavs()}
+          onClick={scrollIntoFavs}
         >
           <Favorite />
         </Fab>
