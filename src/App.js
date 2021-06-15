@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./App.scss";
+import "./App.css";
 import FavoritesList from "./components/Favorites/FavoritesList";
 import RecipeGetForm from "./components/RecipeGetForm/RecipeGetForm";
 import RecipeList from "./components/Recipe/RecipeList";
