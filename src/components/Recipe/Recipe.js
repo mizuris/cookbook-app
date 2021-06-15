@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import RecipeHeader from "./RecipeHeader";
 import RecipeImage from "./RecipeImage";
-import RecipeShare from "./RecipeShare";
-import RecipeExpand from "./RecipeExpand";
-import RecipeCollapse from "./RecipeCollapse";
+import RecipeFavoriteButton from "./Buttons/RecipeFavoriteButton";
+import RecipeShareButton from "./Buttons/RecipeShareButton";
+import RecipeExpandButton from "./Buttons/RecipeExpandButton";
+import RecipeCollapse from "./Collapse/RecipeCollapse";
 import { useSelector } from "react-redux";
 import { Card, CardActions, Collapse } from "@material-ui/core";
-import RecipeFavoriteButton from "./RecipeFavoriteButton";
 
 function Recipe({ recipe }) {
   const favorites = useSelector((state) => state.favorites);
@@ -30,8 +30,8 @@ function Recipe({ recipe }) {
       <RecipeImage image={recipe.image} />
       <CardActions disableSpacing>
         <RecipeFavoriteButton recipe={recipe} isFavorite={isFavorite} />
-        <RecipeShare sourceUrl={recipe.sourceUrl} />
-        <RecipeExpand expanded={expanded} handleExpand={handleExpand} />
+        <RecipeShareButton sourceUrl={recipe.sourceUrl} />
+        <RecipeExpandButton expanded={expanded} handleExpand={handleExpand} />
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <RecipeCollapse

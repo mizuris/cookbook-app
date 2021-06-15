@@ -8,6 +8,8 @@ import {
   IconButton,
 } from "@material-ui/core";
 import { AccessTime, ThumbUp } from "@material-ui/icons";
+import CollapseList from "./CollapseList";
+import CollapseDescription from "./CollapseDescription";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -15,17 +17,6 @@ const useStyles = makeStyles((theme) => ({
   },
   actionField: {
     justifyContent: "flex-end",
-  },
-  sectionDivider: {
-    fontWeight: "bold",
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2),
-  },
-  list: {
-    padding: theme.spacing(1),
-  },
-  listBlock: {
-    marginBottom: theme.spacing(1),
   },
 }));
 
@@ -41,27 +32,12 @@ function RecipeCollapse({ summary, instructions, time, likes }) {
           <ThumbUp className={classes.icon} fontSize="small" /> {likes}
         </IconButton>
       </CardActions>
-      <Typography className={classes.sectionDivider} paragraph>
-        Description:
-      </Typography>
-      <Typography
-        paragraph
-        variant="body1"
-        dangerouslySetInnerHTML={{ __html: summary }}
-      ></Typography>
+      <CollapseDescription summary={summary} />
       <Divider />
       <Typography className={classes.sectionDivider} paragraph>
         Preparation:
       </Typography>
-      <ol className={classes.list}>
-        {instructions[0].steps.map((step) => {
-          return (
-            <li className={classes.listBlock} key={step.number}>
-              {step.step}
-            </li>
-          );
-        })}
-      </ol>
+      <CollapseList instructions={instructions} />
     </CardContent>
   );
 }
