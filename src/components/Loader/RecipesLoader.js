@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function Loader() {
+function RecipesLoader() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -20,4 +20,4 @@ function Loader() {
   );
 }
 
-export default Loader;
+export default RecipesLoader;

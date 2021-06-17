@@ -34,7 +34,7 @@ function RecipeCollapse({ summary, instructions, time, likes }) {
       </CardActions>
       <CollapseDescription summary={summary} />
       <Divider />
-      <Typography className={classes.sectionDivider} paragraph>
+      <Typography className={classes.sectionDivider}>
         Preparation:
       </Typography>
       <CollapseList instructions={instructions} />

@@ -7,6 +7,7 @@ import RecipeExpandButton from "./Buttons/RecipeExpandButton";
 import RecipeCollapse from "./Collapse/RecipeCollapse";
 import { useSelector } from "react-redux";
 import { Card, CardActions, Collapse } from "@material-ui/core";
+import { motion } from "framer-motion";
 
 function Recipe({ recipe }) {
   const favorites = useSelector((state) => state.favorites);
@@ -25,23 +26,25 @@ function Recipe({ recipe }) {
   }, [favorites, recipe]);
 
   return (
-    <Card raised={expanded} style={{ width: "100%" }}>
-      <RecipeHeader title={recipe.title} subtitle={recipe.creditsText} />
-      <RecipeImage image={recipe.image} />
-      <CardActions disableSpacing>
-        <RecipeFavoriteButton recipe={recipe} isFavorite={isFavorite} />
-        <RecipeShareButton sourceUrl={recipe.sourceUrl} />
-        <RecipeExpandButton expanded={expanded} handleExpand={handleExpand} />
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <RecipeCollapse
-          summary={recipe.summary}
-          instructions={recipe.analyzedInstructions}
-          time={recipe.readyInMinutes}
-          likes={recipe.aggregateLikes}
-        />
-      </Collapse>
-    </Card>
+    <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
+      <Card raised={expanded} style={{ width: "100%" }}>
+        <RecipeHeader title={recipe.title} subtitle={recipe.creditsText} />
+        <RecipeImage image={recipe.image} />
+        <CardActions disableSpacing>
+          <RecipeFavoriteButton recipe={recipe} isFavorite={isFavorite} />
+          <RecipeShareButton sourceUrl={recipe.sourceUrl} />
+          <RecipeExpandButton expanded={expanded} handleExpand={handleExpand} />
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <RecipeCollapse
+            summary={recipe.summary}
+            instructions={recipe.analyzedInstructions}
+            time={recipe.readyInMinutes}
+            likes={recipe.aggregateLikes}
+          />
+        </Collapse>
+      </Card>
+    </motion.div>
   );
 }
 
