@@ -29,7 +29,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function TopBar({ scrollIntoFavs, scrollTop }) {
+function TopBar({ scrollTopRef, scrollFavsRef }) {
   const classes = useStyles();
 
   // State and functions for menu component
@@ -37,16 +37,23 @@ function TopBar({ scrollIntoFavs, scrollTop }) {
   const handleOpenMenu = (e) => setAnchorEl(e.target);
   const handleCloseMenu = () => setAnchorEl(null);
 
+  const scrollTarget = (ref, blockPosition) =>
+    ref.current.scrollIntoView({ behavior: "smooth", block: blockPosition });
+
+  const scrollTop = () => scrollTarget(scrollTopRef, "start");
+
+  const scrollFavs = () => scrollTarget(scrollFavsRef, "center");
+
   return (
     <AppBar position="fixed" className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
-        <TopBarLogo handleScroll={scrollTop} />
+        <TopBarLogo scrollTop={scrollTop} />
         <Fab
           size="medium"
           color="secondary"
           aria-label="add"
           className={classes.fabButton}
-          onClick={scrollIntoFavs}
+          onClick={scrollFavs}
         >
           <Favorite />
         </Fab>

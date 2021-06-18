@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import RecipeHeader from "./RecipeHeader";
 import RecipeImage from "./RecipeImage";
 import RecipeFavoriteButton from "./Buttons/RecipeFavoriteButton";
@@ -8,9 +8,11 @@ import RecipeCollapse from "./Collapse/RecipeCollapse";
 import { useSelector } from "react-redux";
 import { Card, CardActions, Collapse } from "@material-ui/core";
 import { motion } from "framer-motion";
+import RecipeCloseButton from "./Buttons/RecipeCloseButton";
 
 function Recipe({ recipe }) {
   const favorites = useSelector((state) => state.favorites);
+  const scrollRef = useRef();
 
   const [isFavorite, setIsFavorite] = useState(false);
   const [expanded, setExpanded] = useState(false);
@@ -27,8 +29,10 @@ function Recipe({ recipe }) {
 
   return (
     <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
-      <Card raised={expanded} style={{ width: "100%" }}>
+      <div ref={scrollRef}></div>
+      <Card style={{ position: "relative" }} raised={expanded}>
         <RecipeHeader title={recipe.title} subtitle={recipe.creditsText} />
+        <RecipeCloseButton id={recipe.id} />
         <RecipeImage image={recipe.image} />
         <CardActions disableSpacing>
           <RecipeFavoriteButton recipe={recipe} isFavorite={isFavorite} />
@@ -37,6 +41,7 @@ function Recipe({ recipe }) {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <RecipeCollapse
+            scrollRef={scrollRef}
             summary={recipe.summary}
             instructions={recipe.analyzedInstructions}
             time={recipe.readyInMinutes}

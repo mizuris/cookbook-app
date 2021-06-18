@@ -16,6 +16,11 @@ const reducer = (state = INITIAL_STATE, action) => {
           (recipe) => recipe.id !== action.payload.id
         ),
       };
+    case "REJECT_RECIPE":
+      return {
+        ...state,
+        recipes: state.recipes.filter((recipe) => recipe.id !== action.payload),
+      };
     case "REMOVE_FROM_FAVORITES":
       return {
         ...state,

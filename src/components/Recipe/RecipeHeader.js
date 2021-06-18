@@ -4,7 +4,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 
 const useStyles = makeStyles((theme) => ({
   header: {
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(3),
     marginBottom: theme.spacing(1),
   },
 }));
