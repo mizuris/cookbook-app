@@ -27,8 +27,8 @@ function AppLoader() {
       className={classes.appLoader}
     >
       <motion.img
-        animate={{ rotate: 360 }}
-        transition={{ duration: 2, repeat: Infinity }}
+        animate={{ scale: [1, 1.5, 1.5, 1, 1], rotate: [0, 0, 360, 360, 0] }}
+        transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
         className={classes.logo}
         src={cookbook_logo}
         alt="app logo"

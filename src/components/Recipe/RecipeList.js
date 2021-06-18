@@ -13,15 +13,13 @@ function RecipeList() {
       justify={recipes.length < 3 ? "center" : "space-evenly"}
       alignItems="stretch"
     >
-      {recipes.length
-        ? recipes.map((recipe) => {
-            return (
-              <Grid item xs={12} md={6} lg={3} key={recipe.id}>
-                <Recipe recipe={recipe} />
-              </Grid>
-            );
-          })
-        : ""}
+      {recipes.map((recipe) => {
+        return (
+          <Grid item xs={12} md={6} lg={3} key={recipe.id}>
+            <Recipe recipe={recipe} />
+          </Grid>
+        );
+      })}
     </Grid>
   );
 }

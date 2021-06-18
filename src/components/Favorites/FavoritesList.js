@@ -10,22 +10,21 @@ function FavoritesList({ favListRef }) {
   return (
     <List ref={favListRef}>
       <AnimatePresence>
-        {favorites.length
-          ? favorites.map((recipe) => {
-              return (
-                <motion.div
-                  key={recipe.id}
-                  initial={{ x: "-100%" }}
-                  animate={{ x: 0 }}
-                  exit={{ opacity: 0 }}
-                >
-                  <ListItem alignItems="flex-start" divider>
-                    <FavoriteRecipe recipe={recipe} />
-                  </ListItem>
-                </motion.div>
-              );
-            })
-          : ""}
+        {favorites.length &&
+          favorites.map((recipe) => {
+            return (
+              <motion.div
+                key={recipe.id}
+                initial={{ x: "-100%" }}
+                animate={{ x: 0 }}
+                exit={{ opacity: 0 }}
+              >
+                <ListItem alignItems="flex-start" divider>
+                  <FavoriteRecipe recipe={recipe} />
+                </ListItem>
+              </motion.div>
+            );
+          })}
       </AnimatePresence>
     </List>
   );
