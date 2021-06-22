@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Grid from "@material-ui/core/Grid";
 import Recipe from "./Recipe";
+import { motion } from "framer-motion";
 
 function RecipeList() {
   const recipes = useSelector((state) => state.recipes);
@@ -15,7 +16,18 @@ function RecipeList() {
     >
       {recipes.map((recipe) => {
         return (
-          <Grid item xs={12} md={6} lg={3} key={recipe.id}>
+          <Grid
+            component={motion.div}
+            layout
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5 }}
+            item
+            xs={12}
+            md={6}
+            lg={3}
+            key={recipe.id}
+          >
             <Recipe recipe={recipe} />
           </Grid>
         );

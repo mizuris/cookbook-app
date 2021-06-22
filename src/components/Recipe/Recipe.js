@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
+import { Card, CardActions, Collapse } from "@material-ui/core";
 import RecipeHeader from "./RecipeHeader";
 import RecipeImage from "./RecipeImage";
 import RecipeFavoriteButton from "./Buttons/RecipeFavoriteButton";
 import RecipeShareButton from "./Buttons/RecipeShareButton";
 import RecipeExpandButton from "./Buttons/RecipeExpandButton";
 import RecipeCollapse from "./Collapse/RecipeCollapse";
-import { useSelector } from "react-redux";
-import { Card, CardActions, Collapse } from "@material-ui/core";
-import { motion } from "framer-motion";
 import RecipeCloseButton from "./Buttons/RecipeCloseButton";
 
 function Recipe({ recipe }) {
@@ -28,7 +27,7 @@ function Recipe({ recipe }) {
   }, [favorites, recipe]);
 
   return (
-    <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
+    <>
       <div ref={scrollRef}></div>
       <Card style={{ position: "relative" }} raised={expanded}>
         <RecipeHeader title={recipe.title} subtitle={recipe.creditsText} />
@@ -41,6 +40,7 @@ function Recipe({ recipe }) {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <RecipeCollapse
+            closeCollapse={handleExpand}
             scrollRef={scrollRef}
             summary={recipe.summary}
             instructions={recipe.analyzedInstructions}
@@ -49,7 +49,7 @@ function Recipe({ recipe }) {
           />
         </Collapse>
       </Card>
-    </motion.div>
+    </>
   );
 }
 

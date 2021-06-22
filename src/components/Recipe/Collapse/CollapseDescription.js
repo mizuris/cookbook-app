@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
   description: {
     fontFamily: "Montserrat, sans-serif",
+    fontSize: "0.8rem",
   },
 }));
 

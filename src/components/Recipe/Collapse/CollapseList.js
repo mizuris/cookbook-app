@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
   },
   listBlock: {
     marginBottom: theme.spacing(1),
+    fontSize: "0.8rem",
   },
 }));
 

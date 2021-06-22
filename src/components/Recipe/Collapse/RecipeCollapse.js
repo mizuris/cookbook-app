@@ -21,24 +21,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function RecipeCollapse({ summary, instructions, time, likes, scrollRef }) {
+function RecipeCollapse(props) {
   const classes = useStyles();
 
   return (
     <CardContent>
       <CardActions className={classes.actionField}>
         <IconButton disabled aria-label="time to preapre deal">
-          <AccessTime className={classes.icon} fontSize="small" /> {time}
+          <AccessTime className={classes.icon} fontSize="small" /> {props.time}
         </IconButton>
         <IconButton disabled aria-label="share">
-          <ThumbUp className={classes.icon} fontSize="small" /> {likes}
+          <ThumbUp className={classes.icon} fontSize="small" /> {props.likes}
         </IconButton>
       </CardActions>
-      <CollapseDescription summary={summary} />
+      <CollapseDescription summary={props.summary} />
       <Divider />
       <Typography className={classes.sectionDivider}>Preparation:</Typography>
-      <CollapseList instructions={instructions} />
-      <CollapseScrollButton scrollRef={scrollRef} />
+      <CollapseList instructions={props.instructions} />
+      <CollapseScrollButton
+        scrollRef={props.scrollRef}
+        closeCollapse={props.closeCollapse}
+      />
     </CardContent>
   );
 }

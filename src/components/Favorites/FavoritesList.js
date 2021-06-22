@@ -13,16 +13,17 @@ function FavoritesList({ favListRef }) {
         {favorites.length &&
           favorites.map((recipe) => {
             return (
-              <motion.div
+              <ListItem
                 key={recipe.id}
+                alignItems="flex-start"
+                divider
+                component={motion.div}
                 initial={{ x: "-100%" }}
                 animate={{ x: 0 }}
                 exit={{ opacity: 0 }}
               >
-                <ListItem alignItems="flex-start" divider>
-                  <FavoriteRecipe recipe={recipe} />
-                </ListItem>
-              </motion.div>
+                <FavoriteRecipe recipe={recipe} />
+              </ListItem>
             );
           })}
       </AnimatePresence>
