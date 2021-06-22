@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Toolbar, Fab, IconButton } from "@material-ui/core";
-import { Favorite, MoreVert } from "@material-ui/icons";
+import { AppBar, Toolbar, IconButton } from "@material-ui/core";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 import TopBarMenu from "./TopBarMenu";
 import TopBarLogo from "./TopBarLogo";
+import TopBarFab from "./TopBarFab";
 
 const useStyles = makeStyles(() => ({
   appBar: {
@@ -14,14 +15,6 @@ const useStyles = makeStyles(() => ({
   },
   toolbar: {
     width: "90%",
-    margin: "0 auto",
-  },
-  fabButton: {
-    position: "absolute",
-    zIndex: 1,
-    bottom: -15,
-    left: 0,
-    right: 0,
     margin: "0 auto",
   },
   grow: {
@@ -48,15 +41,7 @@ function TopBar({ scrollTopRef, scrollFavsRef }) {
     <AppBar position="fixed" className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
         <TopBarLogo scrollTop={scrollTop} />
-        <Fab
-          size="medium"
-          color="secondary"
-          aria-label="add"
-          className={classes.fabButton}
-          onClick={scrollFavs}
-        >
-          <Favorite />
-        </Fab>
+        <TopBarFab scrollFavs={scrollFavs} />
         <div className={classes.grow} />
         <IconButton
           edge="end"
@@ -65,7 +50,7 @@ function TopBar({ scrollTopRef, scrollFavsRef }) {
           aria-haspopup="true"
           onClick={handleOpenMenu}
         >
-          <MoreVert />
+          <MoreVertIcon />
         </IconButton>
         <TopBarMenu anchorEl={anchorEl} handleCloseMenu={handleCloseMenu} />
       </Toolbar>

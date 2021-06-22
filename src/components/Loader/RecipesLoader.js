@@ -9,13 +9,16 @@ const useStyles = makeStyles(() => ({
     left: "50%",
     transform: "translate(-50%, -50%)",
   },
+  spinner: {
+    color: "rgb(0, 175, 170)",
+  },
 }));
 
 function RecipesLoader() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <CircularProgress />
+      <CircularProgress className={classes.spinner} />
     </div>
   );
 }

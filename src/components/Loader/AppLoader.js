@@ -21,9 +21,9 @@ function AppLoader() {
   const classes = useStyles();
   return (
     <motion.div
-      transition={{ delay: 3 }}
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 0 }}
+      transition={{ delay: 3, duration: 0.5 }}
+      initial={{ y: 0 }}
+      animate={{ y: "-100%" }}
       className={classes.appLoader}
     >
       <motion.img
