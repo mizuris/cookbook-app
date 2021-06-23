@@ -54,10 +54,9 @@ function RecipeGetForm({ changeLoadingState }) {
       transition={{ duration: 1 }}
     >
       <form style={{ marginBottom: "5%" }} onSubmit={handleSubmit}>
-        <Grid container spacing={4}>
+        <Grid container spacing={4} alignItems="flex-end">
           <Grid item xs={12} sm={9}>
             <TextField
-              required
               fullWidth
               label="Search recipes"
               type="text"
@@ -70,7 +69,6 @@ function RecipeGetForm({ changeLoadingState }) {
           </Grid>
           <Grid item xs={12} sm={2}>
             <TextField
-              required
               fullWidth
               label="Quantity"
               type="number"
