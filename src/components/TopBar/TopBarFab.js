@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import Fab from "@material-ui/core/Fab";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import { motion } from "framer-motion";
 
 const useStyles = makeStyles(() => ({
   fabButton: {
@@ -18,6 +19,10 @@ function TopBarFab({ scrollFavs }) {
   const classes = useStyles();
   return (
     <Fab
+      component={motion.button}
+      initial={{ scale: 0 }}
+      animate={{ scale: 1, rotate: 720 }}
+      transition={{ duration: 1 }}
       size="medium"
       color="secondary"
       aria-label="add"
