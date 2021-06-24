@@ -12,7 +12,6 @@ function RecipeList() {
       container
       spacing={4}
       justify={recipes.length < 3 ? "center" : "space-evenly"}
-      alignItems="flex-start"
     >
       {recipes.map((recipe) => {
         return (

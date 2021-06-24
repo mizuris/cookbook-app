@@ -1,19 +1,21 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { makeStyles } from "@material-ui/core/styles";
 import {
+  makeStyles,
   ListItemAvatar,
   ListItemText,
   ListItemSecondaryAction,
   IconButton,
   Avatar,
 } from "@material-ui/core";
-import DeleteIcon from "@material-ui/icons/Delete";
-import ShareIcon from "@material-ui/icons/Share";
+import { Delete, Share } from "@material-ui/icons";
 
 const useStyles = makeStyles(() => ({
   text: {
     maxWidth: "40%",
+  },
+  icon: {
+    color: "inherit",
   },
 }));
 
@@ -40,10 +42,10 @@ function FavoriteRecipe({ recipe }) {
       />
       <ListItemSecondaryAction>
         <IconButton href={recipe.sourceUrl} rel="noopener" target="_blank">
-          <ShareIcon />
+          <Share className={classes.icon} />
         </IconButton>
         <IconButton edge="end" aria-label="delete" onClick={handleDelete}>
-          <DeleteIcon />
+          <Delete className={classes.icon} />
         </IconButton>
       </ListItemSecondaryAction>
     </>

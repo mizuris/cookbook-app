@@ -16,3 +16,7 @@ body {
 #root {
   height: 100%;
 }
+
+h1 {
+  color: rgb(0, 175, 170);
+}

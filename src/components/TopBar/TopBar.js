@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Toolbar, IconButton } from "@material-ui/core";
+import { makeStyles, AppBar, Toolbar, IconButton } from "@material-ui/core";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import TopBarMenu from "./TopBarMenu";
 import TopBarLogo from "./TopBarLogo";

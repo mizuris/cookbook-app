@@ -1,6 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
-import Fab from "@material-ui/core/Fab";
+import { makeStyles, Fab } from "@material-ui/core";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { motion } from "framer-motion";
 

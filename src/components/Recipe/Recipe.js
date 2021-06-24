@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Card, CardActions, Collapse } from "@material-ui/core";
+import { Card, CardActions, Collapse, makeStyles } from "@material-ui/core";
 import RecipeHeader from "./RecipeHeader";
 import RecipeImage from "./RecipeImage";
 import RecipeFavoriteButton from "./Buttons/RecipeFavoriteButton";
@@ -8,7 +8,14 @@ import RecipeExpandButton from "./Buttons/RecipeExpandButton";
 import RecipeCollapse from "./Collapse/RecipeCollapse";
 import RecipeCloseButton from "./Buttons/RecipeCloseButton";
 
+const useStyles = makeStyles(() => ({
+  root: {
+    position: "relative",
+  },
+}));
+
 function Recipe({ recipe }) {
+  const classes = useStyles();
   const scrollRef = useRef();
 
   // const [isFavorite, setIsFavorite] = useState(null);
@@ -22,7 +29,7 @@ function Recipe({ recipe }) {
   return (
     <>
       <div ref={scrollRef}></div>
-      <Card style={{ position: "relative" }} raised={expanded}>
+      <Card className={classes.root} raised={expanded}>
         <RecipeHeader title={recipe.title} subtitle={recipe.creditsText} />
         <RecipeCloseButton id={recipe.id} />
         <RecipeImage image={recipe.image} />

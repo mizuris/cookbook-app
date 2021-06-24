@@ -1,6 +1,5 @@
 import React from "react";
-import { makeStyles, Typography } from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
+import { makeStyles, Typography, IconButton } from "@material-ui/core";
 import { ArrowUpwardRounded } from "@material-ui/icons";
 
 const useStyles = makeStyles(() => ({
