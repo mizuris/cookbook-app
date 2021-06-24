@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core";
 import FavoritesList from "./components/Favorites/FavoritesList";
 import RecipeGetForm from "./components/RecipeGetForm/RecipeGetForm";
@@ -26,8 +25,6 @@ function App() {
   const classes = useStyles();
   const topRef = useRef(null);
   const favListRef = useRef(null);
-  const favorites = useSelector((state) => state.favorites);
-  const recipes = useSelector((state) => state.recipes);
 
   // Loading screen
   const [loadingScreen, setLoadingScreen] = useState(true);
@@ -37,8 +34,9 @@ function App() {
     }, 3500);
   }, [loadingScreen]);
 
-  const [isLoading, setIsLoading] = useState(false);
-  const changeLoadingState = (status) => setIsLoading(status);
+  // Loading data indictaor
+  const [recipesLoading, setRecipesLoading] = useState(false);
+  const changeLoadingState = (status) => setRecipesLoading(status);
 
   return loadingScreen ? (
     <AppLoader loadingScreen={loadingScreen} />
@@ -48,13 +46,14 @@ function App() {
       <div className={classes.appContainer}>
         <RecipeGetForm changeLoadingState={changeLoadingState} />
         <main>
-          <SectionHeader dependencyArray={recipes} text="Your recipes" />
-          {isLoading ? <RecipesLoader /> : <RecipeList />}
-          <SectionHeader
-            dependencyArray={favorites}
-            text="Your favorite recipes"
-          />
-          <FavoritesList favListRef={favListRef} />
+          <section>
+            <SectionHeader control="recipes" text="Your recipes" />
+            {recipesLoading ? <RecipesLoader /> : <RecipeList />}
+          </section>
+          <section>
+            <SectionHeader control="favorites" text="Your favorite recipes" />
+            <FavoritesList favListRef={favListRef} />
+          </section>
         </main>
       </div>
     </div>

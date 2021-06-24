@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core";
 import { motion } from "framer-motion";
 
@@ -8,9 +9,14 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function SectionHeader({ dependencyArray, text }) {
+function SectionHeader({ text, control }) {
   const classes = useStyles();
-  if (dependencyArray && dependencyArray.length) {
+  const recipes = useSelector((state) => state.recipes);
+  const favorites = useSelector((state) => state.favorites);
+
+  control === "recipes" ? (control = recipes) : (control = favorites);
+
+  if (control && control.length) {
     return (
       <motion.h1
         className={classes.sectionHeader}
