@@ -20,6 +20,7 @@ function FavoritesList({ favListRef }) {
                 component={motion.div}
                 initial={{ x: "-100%" }}
                 animate={{ x: 0 }}
+                transition={{ duration: 0.5 }}
                 exit={{ opacity: 0 }}
               >
                 <FavoriteRecipe recipe={recipe} />
