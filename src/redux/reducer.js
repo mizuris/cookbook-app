@@ -1,26 +1,18 @@
 const INITIAL_STATE = {
   favorites: [],
   recipes: [],
-  loading: false,
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case "TOGGLE_FAVORITES":
-      if (!state.favorites.includes(action.payload)) {
-        return { ...state, favorites: [...state.favorites, action.payload] };
+    case "ADD_TO_FAVORITES":
+      const alreadyFavorite = state.favorites.some(
+        (item) => item.id === action.payload.id
+      );
+      if (alreadyFavorite) {
+        return;
       }
-      return {
-        ...state,
-        favorites: state.favorites.filter(
-          (recipe) => recipe.id !== action.payload.id
-        ),
-      };
-    case "REJECT_RECIPE":
-      return {
-        ...state,
-        recipes: state.recipes.filter((recipe) => recipe.id !== action.payload),
-      };
+      return { ...state, favorites: [...state.favorites, action.payload] };
     case "REMOVE_FROM_FAVORITES":
       return {
         ...state,
@@ -33,15 +25,10 @@ const reducer = (state = INITIAL_STATE, action) => {
         ...state,
         recipes: action.payload,
       };
-    case "SET_LOADING_ON":
+    case "REJECT_RECIPE":
       return {
         ...state,
-        loading: true,
-      };
-    case "SET_LOADING_OFF":
-      return {
-        ...state,
-        loading: false,
+        recipes: state.recipes.filter((recipe) => recipe.id !== action.payload),
       };
     default:
       return state;

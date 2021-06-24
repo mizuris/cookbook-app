@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useRef } from "react";
 import { Card, CardActions, Collapse } from "@material-ui/core";
 import RecipeHeader from "./RecipeHeader";
 import RecipeImage from "./RecipeImage";
@@ -10,21 +9,15 @@ import RecipeCollapse from "./Collapse/RecipeCollapse";
 import RecipeCloseButton from "./Buttons/RecipeCloseButton";
 
 function Recipe({ recipe }) {
-  const favorites = useSelector((state) => state.favorites);
   const scrollRef = useRef();
 
-  const [isFavorite, setIsFavorite] = useState(false);
+  // const [isFavorite, setIsFavorite] = useState(null);
   const [expanded, setExpanded] = useState(false);
 
   // Expand handler for recipe details
   const handleExpand = () => {
     setExpanded(!expanded);
   };
-
-  // Checking if recipe is favorite when rendered
-  useEffect(() => {
-    favorites.includes(recipe) ? setIsFavorite(true) : setIsFavorite(false);
-  }, [favorites, recipe]);
 
   return (
     <>
@@ -34,7 +27,7 @@ function Recipe({ recipe }) {
         <RecipeCloseButton id={recipe.id} />
         <RecipeImage image={recipe.image} />
         <CardActions disableSpacing>
-          <RecipeFavoriteButton recipe={recipe} isFavorite={isFavorite} />
+          <RecipeFavoriteButton recipe={recipe} />
           <RecipeShareButton sourceUrl={recipe.sourceUrl} />
           <RecipeExpandButton expanded={expanded} handleExpand={handleExpand} />
         </CardActions>
