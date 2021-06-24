@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core";
-import "./App.css";
 import FavoritesList from "./components/Favorites/FavoritesList";
 import RecipeGetForm from "./components/RecipeGetForm/RecipeGetForm";
 import RecipeList from "./components/Recipe/RecipeList";
