@@ -22,7 +22,7 @@ function RecipeGetForm({ changeLoadingState }) {
   const getRecipe = async () => {
     changeLoadingState(true);
     const queryResult = await fetch(
-      `http://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${query.text}&number=${query.number}&addRecipeInformation=true`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${query.text}&number=${query.number}&addRecipeInformation=true`
     );
     if (queryResult) {
       changeLoadingState(true);
