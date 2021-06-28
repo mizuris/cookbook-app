@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
   favorites: [],
   recipes: [],
+  error: "",
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -29,6 +30,11 @@ const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         recipes: state.recipes.filter((recipe) => recipe.id !== action.payload),
+      };
+    case "SET_ERROR":
+      return {
+        ...state,
+        error: action.payload,
       };
     default:
       return state;

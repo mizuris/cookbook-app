@@ -7,6 +7,8 @@ import TopBar from "./components/TopBar/TopBar";
 import RecipesLoader from "./components/Loader/RecipesLoader";
 import AppLoader from "./components/Loader/AppLoader";
 import SectionHeader from "./components/SectionHeader/SectionHeader";
+import { useSelector } from "react-redux";
+import ErrorMessage from "./components/Error/ErrorMessage";
 
 const useStyles = makeStyles(() => ({
   app: {
@@ -25,6 +27,7 @@ function App() {
   const classes = useStyles();
   const topRef = useRef(null);
   const favListRef = useRef(null);
+  const error = useSelector((state) => state.error);
 
   // Loading screen
   const [loadingScreen, setLoadingScreen] = useState(true);
@@ -38,24 +41,23 @@ function App() {
   const [recipesLoading, setRecipesLoading] = useState(false);
   const changeLoadingState = (status) => setRecipesLoading(status);
 
-  return loadingScreen ? (
-    <AppLoader loadingScreen={loadingScreen} />
-  ) : (
+  if (loadingScreen) {
+    return <AppLoader loadingScreen={loadingScreen} />;
+  }
+
+  return (
     <div className={classes.app} ref={topRef}>
       <TopBar scrollTopRef={topRef} scrollFavsRef={favListRef} />
       <div className={classes.appContainer}>
         <RecipeGetForm changeLoadingState={changeLoadingState} />
         <main>
-          <section>
-            <SectionHeader control="recipes" text="Your recipes" />
-            {recipesLoading ? <RecipesLoader /> : <RecipeList />}
-          </section>
-          <section>
-            <SectionHeader control="favorites" text="Your favorite recipes" />
-            <FavoritesList favListRef={favListRef} />
-          </section>
+          <SectionHeader control="recipes" text="Your recipes" />
+          {recipesLoading ? <RecipesLoader /> : <RecipeList />}
+          <SectionHeader control="favorites" text="Your favorite recipes" />
+          <FavoritesList favListRef={favListRef} />
         </main>
       </div>
+      <ErrorMessage error={error} />
     </div>
   );
 }
