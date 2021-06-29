@@ -1,10 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Grid from "@material-ui/core/Grid";
-import Recipe from "./Recipe";
+import Recipe from "../Recipe/Recipe";
 import { motion } from "framer-motion";
 
-function RecipeList() {
+function RecipesList() {
   const recipes = useSelector((state) => state.recipes);
 
   return (
@@ -35,4 +35,4 @@ function RecipeList() {
   );
 }
 
-export default RecipeList;
+export default RecipesList;

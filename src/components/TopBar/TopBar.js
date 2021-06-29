@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { makeStyles, AppBar, Toolbar, IconButton } from "@material-ui/core";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import TopBarMenu from "./TopBarMenu";
-import TopBarLogo from "./TopBarLogo";
-import TopBarFab from "./TopBarFab";
+import SocialMenu from "./Menu";
+import Logo from "./Logo";
+import FavButton from "./FavButton";
 
 const useStyles = makeStyles(() => ({
   appBar: {
@@ -39,8 +39,8 @@ function TopBar({ scrollTopRef, scrollFavsRef }) {
   return (
     <AppBar position="fixed" className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
-        <TopBarLogo scrollTop={scrollTop} />
-        <TopBarFab scrollFavs={scrollFavs} />
+        <Logo scrollTop={scrollTop} />
+        <FavButton scrollFavs={scrollFavs} />
         <div className={classes.grow} />
         <IconButton
           edge="end"
@@ -51,7 +51,7 @@ function TopBar({ scrollTopRef, scrollFavsRef }) {
         >
           <MoreVertIcon />
         </IconButton>
-        <TopBarMenu anchorEl={anchorEl} handleCloseMenu={handleCloseMenu} />
+        <SocialMenu anchorEl={anchorEl} handleCloseMenu={handleCloseMenu} />
       </Toolbar>
     </AppBar>
   );

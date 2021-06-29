@@ -8,9 +8,9 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function RecipeImage({ image }) {
+function Image({ image }) {
   const classes = useStyles();
   return <CardMedia className={classes.media} image={image} />;
 }
 
-export default RecipeImage;
+export default Image;

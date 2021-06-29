@@ -14,7 +14,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function TopBarFab({ scrollFavs }) {
+function FavButton({ scrollFavs }) {
   const classes = useStyles();
   return (
     <Fab
@@ -33,4 +33,4 @@ function TopBarFab({ scrollFavs }) {
   );
 }
 
-export default TopBarFab;
+export default FavButton;

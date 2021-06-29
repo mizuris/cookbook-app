@@ -9,7 +9,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function CollapseScrollButton({ scrollRef, closeCollapse }) {
+function ScrollButton({ scrollRef, closeCollapse }) {
   const classes = useStyles();
   const scrollTop = () =>
     scrollRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -30,4 +30,4 @@ function CollapseScrollButton({ scrollRef, closeCollapse }) {
   );
 }
 
-export default CollapseScrollButton;
+export default ScrollButton;

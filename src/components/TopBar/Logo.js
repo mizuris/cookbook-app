@@ -3,7 +3,7 @@ import IconButton from "@material-ui/core/IconButton";
 import logo_white_mobile from "../../assets/icon/cookbook_icon_white.png";
 import { motion } from "framer-motion";
 
-function TopBarLogo({ scrollTop }) {
+function Logo({ scrollTop }) {
   return (
     <motion.div
       initial={{ scale: 0 }}
@@ -21,4 +21,4 @@ function TopBarLogo({ scrollTop }) {
   );
 }
 
-export default TopBarLogo;
+export default Logo;

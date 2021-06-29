@@ -2,7 +2,7 @@ import React from "react";
 import { Menu, MenuItem, IconButton } from "@material-ui/core";
 import { Close, Facebook, LinkedIn, GitHub } from "@material-ui/icons";
 
-function TopBarMenu({ anchorEl, handleCloseMenu }) {
+function SocialMenu({ anchorEl, handleCloseMenu }) {
   return (
     <Menu
       id="menu"
@@ -50,4 +50,4 @@ function TopBarMenu({ anchorEl, handleCloseMenu }) {
   );
 }
 
-export default TopBarMenu;
+export default SocialMenu;

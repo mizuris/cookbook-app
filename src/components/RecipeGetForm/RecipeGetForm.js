@@ -14,35 +14,26 @@ function RecipeGetForm({ changeLoadingState }) {
   // Submiting form and reseting input values to default state
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await getRecipe();
+    await getRecipes();
     setQuery({ text: "", number: "" });
   };
 
   // Calling API from endpoint and saving it to redux
-  const getRecipe = async () => {
+  const getRecipes = async () => {
     changeLoadingState(true);
-    const queryResult = await fetch(
+    await fetch(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${query.text}&number=${query.number}&addRecipeInformation=true`
-    );
-    if (queryResult) {
-      changeLoadingState(true);
-      await queryResult
-        .json()
-        .then((data) =>
-          dispatch({
-            type: "GET_RECIPES",
-            payload: data.results,
-          })
-        )
-        .catch((err) => {
-          dispatch({
-            type: "SET_ERROR",
-            payload: err,
-          });
+    )
+      .then((res) => {
+        if (!res.ok) {
           changeLoadingState(false);
-        });
-      changeLoadingState(false);
-    }
+          throw Error("Something went wrong");
+        }
+        return res.json();
+      })
+      .then((data) => dispatch({ type: "GET_RECIPES", payload: data.results }))
+      .catch((err) => dispatch({ type: "SET_ERROR", payload: err.message }));
+    changeLoadingState(false);
   };
 
   // Disabling button when no inputs

@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function CollapseDescription({ summary }) {
+function Description({ summary }) {
   const classes = useStyles();
   return (
     <>
@@ -28,4 +28,4 @@ function CollapseDescription({ summary }) {
   );
 }
 
-export default CollapseDescription;
+export default Description;

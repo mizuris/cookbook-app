@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function CollapseList({ instructions }) {
+function Instructions({ instructions }) {
   const classes = useStyles();
   return (
     <ol className={classes.list}>
@@ -28,4 +28,4 @@ function CollapseList({ instructions }) {
   );
 }
 
-export default CollapseList;
+export default Instructions;

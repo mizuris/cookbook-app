@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function RecipeHeader({ title, subtitle }) {
+function Title({ title, subtitle }) {
   const classes = useStyles();
   return (
     <CardHeader
@@ -18,4 +18,4 @@ function RecipeHeader({ title, subtitle }) {
   );
 }
 
-export default RecipeHeader;
+export default Title;

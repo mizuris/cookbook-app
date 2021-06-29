@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function RecipeExpandButton({ expanded, handleExpand }) {
+function ExpandButton({ expanded, handleExpand }) {
   const classes = useStyles();
   return (
     <IconButton
@@ -32,4 +32,4 @@ function RecipeExpandButton({ expanded, handleExpand }) {
   );
 }
 
-export default RecipeExpandButton;
+export default ExpandButton;

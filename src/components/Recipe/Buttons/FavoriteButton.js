@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 
-function RecipeFavoriteButton({ recipe }) {
+function FavoriteButton({ recipe }) {
   const [isFavorite, setIsFavorite] = useState(null);
   const favorites = useSelector((state) => state.favorites);
   const dispatch = useDispatch();
@@ -40,4 +40,4 @@ function RecipeFavoriteButton({ recipe }) {
   );
 }
 
-export default RecipeFavoriteButton;
+export default FavoriteButton;

@@ -8,9 +8,9 @@ import {
   IconButton,
 } from "@material-ui/core";
 import { AccessTime, ThumbUp } from "@material-ui/icons";
-import CollapseList from "./CollapseList";
-import CollapseDescription from "./CollapseDescription";
-import CollapseScrollButton from "./CollapseScrollButton";
+import Instructions from "./Instructions";
+import Description from "./Description";
+import ScrollButton from "../Buttons/ScrollButton";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -34,11 +34,11 @@ function RecipeCollapse(props) {
           <ThumbUp className={classes.icon} fontSize="small" /> {props.likes}
         </IconButton>
       </CardActions>
-      <CollapseDescription summary={props.summary} />
+      <Description summary={props.summary} />
       <Divider />
       <Typography className={classes.sectionDivider}>Preparation:</Typography>
-      <CollapseList instructions={props.instructions} />
-      <CollapseScrollButton
+      <Instructions instructions={props.instructions} />
+      <ScrollButton
         scrollRef={props.scrollRef}
         closeCollapse={props.closeCollapse}
       />

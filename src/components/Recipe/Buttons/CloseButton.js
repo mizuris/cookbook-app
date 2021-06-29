@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function RecipeCloseButton({ id }) {
+function CloseButton({ id }) {
   const dispatch = useDispatch();
   const classes = useStyles();
 
@@ -30,4 +30,4 @@ function RecipeCloseButton({ id }) {
   );
 }
 
-export default RecipeCloseButton;
+export default CloseButton;

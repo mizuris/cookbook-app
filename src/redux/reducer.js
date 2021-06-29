@@ -1,7 +1,7 @@
 const INITIAL_STATE = {
   favorites: [],
   recipes: [],
-  error: "",
+  error: null,
 };
 
 const reducer = (state = INITIAL_STATE, action) => {

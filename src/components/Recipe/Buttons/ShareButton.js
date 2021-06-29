@@ -2,7 +2,7 @@ import React from "react";
 import { IconButton, Link } from "@material-ui/core";
 import ShareIcon from "@material-ui/icons/Share";
 
-function RecipeShareButton({ sourceUrl }) {
+function ShareButton({ sourceUrl }) {
   return (
     <IconButton aria-label="share">
       <Link
@@ -17,4 +17,4 @@ function RecipeShareButton({ sourceUrl }) {
   );
 }
 
-export default RecipeShareButton;
+export default ShareButton;
