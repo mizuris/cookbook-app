@@ -5,6 +5,7 @@ import TopBar from "./components/TopBar/TopBar";
 import RecipeGetForm from "./components/RecipeGetForm/RecipeGetForm";
 import Recipes from "./components/Containers/Recipes";
 import Favorites from "./components/Containers/Favorites";
+import Error from "./components/Error/Error";
 
 const useStyles = makeStyles(() => ({
   app: {
@@ -48,6 +49,7 @@ function App() {
         <Recipes recipesLoading={recipesLoading} />
         <Favorites favListRef={favListRef} />
       </main>
+      <Error />
     </div>
   );
 }

@@ -32,7 +32,7 @@ function RecipeGetForm({ changeLoadingState }) {
         return res.json();
       })
       .then((data) => dispatch({ type: "GET_RECIPES", payload: data.results }))
-      .catch((err) => dispatch({ type: "SET_ERROR", payload: err.message }));
+      .catch((error) => dispatch({ type: "CREATE_ERROR", payload: error }));
     changeLoadingState(false);
   };
 

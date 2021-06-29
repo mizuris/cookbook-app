@@ -25,13 +25,14 @@ const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         recipes: action.payload,
+        error: null,
       };
     case "REJECT_RECIPE":
       return {
         ...state,
         recipes: state.recipes.filter((recipe) => recipe.id !== action.payload),
       };
-    case "SET_ERROR":
+    case "CREATE_ERROR":
       return {
         ...state,
         error: action.payload,
