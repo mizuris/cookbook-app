@@ -24,17 +24,19 @@ const useStyles = makeStyles((theme) => ({
 
 function RecipeCollapse({ recipe, scrollRef, closeCollapse }) {
   const classes = useStyles();
-  const { time, likes, summary, analyzedInstructions } = recipe;
+  const { readyInMinutes, aggregateLikes, summary, analyzedInstructions } =
+    recipe;
 
   return (
     <CardContent>
       <DietsInfo recipe={recipe} />
       <CardActions className={classes.actionField}>
-        <IconButton disabled aria-label="time to preapre deal">
-          <AccessTime className={classes.icon} fontSize="small" /> {time}
+        <IconButton size="small" disabled aria-label="time to preapre deal">
+          <AccessTime className={classes.icon} fontSize="small" />{" "}
+          {aggregateLikes}
         </IconButton>
-        <IconButton disabled aria-label="share">
-          <ThumbUp className={classes.icon} fontSize="small" /> {likes}
+        <IconButton size="small" disabled aria-label="share">
+          <ThumbUp className={classes.icon} fontSize="small" /> {readyInMinutes}
         </IconButton>
       </CardActions>
       <Description summary={summary} />
