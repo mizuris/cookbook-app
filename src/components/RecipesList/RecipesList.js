@@ -6,6 +6,12 @@ import { motion } from "framer-motion";
 
 function RecipesList() {
   const recipes = useSelector((state) => state.recipes);
+  const variants = {
+    show: (custom) => ({
+      scale: 1,
+      transition: { delay: custom * 0.1, duration: 0.5 },
+    }),
+  };
 
   return (
     <Grid
@@ -13,14 +19,15 @@ function RecipesList() {
       spacing={4}
       justify={recipes.length < 3 ? "center" : "space-evenly"}
     >
-      {recipes.map((recipe) => {
+      {recipes.map((recipe, index) => {
         return (
           <Grid
             component={motion.div}
             layout
+            custom={index}
+            variants={variants}
+            animate="show"
             initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5 }}
             item
             xs={12}
             md={6}

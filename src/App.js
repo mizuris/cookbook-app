@@ -37,10 +37,12 @@ function App() {
   const [recipesLoading, setRecipesLoading] = useState(false);
   const changeLoadingState = (status) => setRecipesLoading(status);
 
+  // Loading screen render
   if (loadingScreen) {
     return <AppLoader loadingScreen={loadingScreen} />;
   }
 
+  // App content render
   return (
     <div className={classes.app} ref={topRef}>
       <TopBar scrollTopRef={topRef} scrollFavsRef={favListRef} />
