@@ -16,6 +16,7 @@ const useStyles = makeStyles(() => ({
 
 function FavButton({ scrollFavs }) {
   const classes = useStyles();
+
   return (
     <Fab
       component={motion.button}

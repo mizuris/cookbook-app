@@ -8,8 +8,7 @@ body,
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Montserrat", "Roboto",
-    "Ubuntu", sans-serif;
+  font-family: "Montserrat", "Ubuntu", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

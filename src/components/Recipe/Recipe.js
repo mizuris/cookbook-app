@@ -17,8 +17,6 @@ const useStyles = makeStyles(() => ({
 function Recipe({ recipe }) {
   const classes = useStyles();
   const scrollRef = useRef();
-
-  // const [isFavorite, setIsFavorite] = useState(null);
   const [expanded, setExpanded] = useState(false);
 
   // Expand handler for recipe details
@@ -30,7 +28,7 @@ function Recipe({ recipe }) {
     <>
       <div ref={scrollRef}></div>
       <Card className={classes.root} raised={expanded}>
-        <Title title={recipe.title} subtitle={recipe.creditsText} />
+        <Title title={recipe.title} />
         <CloseButton id={recipe.id} />
         <Image image={recipe.image} />
         <CardActions disableSpacing>
@@ -40,12 +38,9 @@ function Recipe({ recipe }) {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <RecipeCollapse
+            recipe={recipe}
             closeCollapse={handleExpand}
             scrollRef={scrollRef}
-            summary={recipe.summary}
-            instructions={recipe.analyzedInstructions}
-            time={recipe.readyInMinutes}
-            likes={recipe.aggregateLikes}
           />
         </Collapse>
       </Card>

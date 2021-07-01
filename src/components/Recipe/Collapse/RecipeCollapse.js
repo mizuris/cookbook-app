@@ -11,6 +11,7 @@ import { AccessTime, ThumbUp } from "@material-ui/icons";
 import Instructions from "./Instructions";
 import Description from "./Description";
 import ScrollButton from "../Buttons/ScrollButton";
+import DietsInfo from "./DietsInfo";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -21,27 +22,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function RecipeCollapse(props) {
+function RecipeCollapse({ recipe, scrollRef, closeCollapse }) {
   const classes = useStyles();
+  const { time, likes, summary, analyzedInstructions } = recipe;
 
   return (
     <CardContent>
+      <DietsInfo recipe={recipe} />
       <CardActions className={classes.actionField}>
         <IconButton disabled aria-label="time to preapre deal">
-          <AccessTime className={classes.icon} fontSize="small" /> {props.time}
+          <AccessTime className={classes.icon} fontSize="small" /> {time}
         </IconButton>
         <IconButton disabled aria-label="share">
-          <ThumbUp className={classes.icon} fontSize="small" /> {props.likes}
+          <ThumbUp className={classes.icon} fontSize="small" /> {likes}
         </IconButton>
       </CardActions>
-      <Description summary={props.summary} />
+      <Description summary={summary} />
       <Divider />
       <Typography className={classes.sectionDivider}>Preparation:</Typography>
-      <Instructions instructions={props.instructions} />
-      <ScrollButton
-        scrollRef={props.scrollRef}
-        closeCollapse={props.closeCollapse}
-      />
+      <Instructions instructions={analyzedInstructions} />
+      <ScrollButton scrollRef={scrollRef} closeCollapse={closeCollapse} />
     </CardContent>
   );
 }

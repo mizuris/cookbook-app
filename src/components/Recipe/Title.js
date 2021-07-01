@@ -5,17 +5,13 @@ const useStyles = makeStyles((theme) => ({
   header: {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(1),
+    fontFamily: "Montserrat",
   },
 }));
 
-function Title({ title, subtitle }) {
+function Title({ title }) {
   const classes = useStyles();
-  return (
-    <CardHeader
-      title={<h4 className={classes.header}>{title}</h4>}
-      subheader={<h5>{subtitle}</h5>}
-    />
-  );
+  return <CardHeader title={<h6 className={classes.header}>{title}</h6>} />;
 }
 
 export default Title;

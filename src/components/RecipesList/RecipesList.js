@@ -13,6 +13,8 @@ function RecipesList() {
     }),
   };
 
+  console.log(recipes)
+
   return (
     <Grid
       container
