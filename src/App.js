@@ -42,7 +42,7 @@ function App() {
 
   // App content render
   return (
-    <div className={classes.app} id="app">
+    <div className={classes.app}>
       <TopBar />
       <main className={classes.appContainer}>
         <RecipeGetForm changeLoadingState={changeLoadingState} />
