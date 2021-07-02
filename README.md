@@ -1,6 +1,6 @@
 # Introduction to CookBook
 
-![Cookbook logo](https://i.ibb.co/dGnn8G3/logo.jpg)\
+![Cookbook logo](https://i.ibb.co/dGnn8G3/logo.jpg | width=100)\
 This app is an outcome of learning react. You can search recipes to get response from [Spooncacular](https://spoonacular.com/food-api/).
 
 ### LIVE VERSION
