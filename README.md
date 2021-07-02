@@ -1,6 +1,6 @@
 # Introduction to CookBook
 
-![Cookbook logo](https://ibb.co/SRqqFR1)
+![Cookbook logo](https://i.ibb.co/dGnn8G3/logo.jpg)
 This app is an outcome of learning react. You can search recipes to get response from [Spooncacular](https://spoonacular.com/food-api/).
 
 ### LIVE VERSION
@@ -25,8 +25,8 @@ Project is used by css-in-js, provided by MUI - makeStyles.
 ## RWD
 
 App is designed mobile-first, fits all screen widths thanks to MUI's grid breakpoints and using resposive values for font sizes and margins/paddings.
-![Desktop mockup](https://ibb.co/6bvc81T)
-![Mobile mockup](https://ibb.co/syTbSt4)
+![Desktop mockup](https://i.ibb.co/L6QDrJc/desktop.jpg)
+![Mobile mockup](https://i.ibb.co/pJHbDnT/mobile.png)
 
 ## Usage
 
