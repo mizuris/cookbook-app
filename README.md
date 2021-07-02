@@ -1,11 +1,11 @@
 # Introduction to CookBook
 
-![Cookbook logo](https://i.ibb.co/dGnn8G3/logo.jpg | width=100)\
+![Cookbook logo](https://i.ibb.co/dGnn8G3/logo.jpg)\
 This app is an outcome of learning react. You can search recipes to get response from [Spooncacular](https://spoonacular.com/food-api/).
 
 ### LIVE VERSION
 
-Check [LIVE VERSION](https://mizuris.github.io/cookbook-app/) <- under this link.
+Check [LIVE VERSION](https://mizuris.github.io/cookbook-app/).
 
 ## Technologies
 
@@ -20,7 +20,7 @@ CookBook was created with usage of:
 
 ## Styling
 
-Project is used by css-in-js, provided by MUI - makeStyles.
+Project is used by css-in-js, provided by MUI - makeStyles. Components are animated by framer-motion package.
 
 ## RWD
 
