@@ -13,8 +13,6 @@ function RecipesList() {
     }),
   };
 
-  console.log(recipes)
-
   return (
     <Grid
       container
@@ -32,7 +30,7 @@ function RecipesList() {
             initial={{ scale: 0 }}
             item
             xs={12}
-            md={6}
+            sm={6}
             lg={3}
             key={recipe.id}
           >

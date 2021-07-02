@@ -17,7 +17,7 @@ function ScrollButton({ scrollRef, closeCollapse }) {
   return (
     <div className={classes.container}>
       <IconButton
-        size="small"
+        size="medium"
         onClick={() => {
           scrollTop();
           closeCollapse();

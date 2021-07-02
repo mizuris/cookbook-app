@@ -15,10 +15,16 @@ import DietsInfo from "./DietsInfo";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(1),
+    maxWidth: 16,
   },
   actionField: {
     justifyContent: "flex-end",
+  },
+  sectionDivider: {
+    fontWeight: "bold",
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
   },
 }));
 
@@ -29,16 +35,16 @@ function RecipeCollapse({ recipe, scrollRef, closeCollapse }) {
 
   return (
     <CardContent>
-      <DietsInfo recipe={recipe} />
       <CardActions className={classes.actionField}>
-        <IconButton size="small" disabled aria-label="time to preapre deal">
+        <IconButton size="small" aria-label="time to preapre deal">
           <AccessTime className={classes.icon} fontSize="small" />{" "}
-          {aggregateLikes}
+          {readyInMinutes}
         </IconButton>
-        <IconButton size="small" disabled aria-label="share">
-          <ThumbUp className={classes.icon} fontSize="small" /> {readyInMinutes}
+        <IconButton size="small" aria-label="share">
+          <ThumbUp className={classes.icon} fontSize="small" /> {aggregateLikes}
         </IconButton>
       </CardActions>
+      <DietsInfo recipe={recipe} />
       <Description summary={summary} />
       <Divider />
       <Typography className={classes.sectionDivider}>Preparation:</Typography>
