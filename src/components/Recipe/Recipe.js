@@ -2,11 +2,11 @@ import React, { useState, useRef } from "react";
 import { Card, CardActions, Collapse, makeStyles } from "@material-ui/core";
 import Title from "./Title";
 import Image from "./Image";
-import FavoriteButton from "./Buttons/FavoriteButton";
-import ShareButton from "./Buttons/ShareButton";
-import ExpandButton from "./Buttons/ExpandButton";
-import RecipeCollapse from "./Collapse/RecipeCollapse";
-import CloseButton from "./Buttons/CloseButton";
+import FavoriteButton from "../Buttons/FavoriteButton";
+import ShareButton from "../Buttons/ShareButton";
+import ExpandButton from "../Buttons/ExpandButton";
+import RecipeCollapse from "../Collapse/RecipeCollapse";
+import CloseButton from "../Buttons/CloseButton";
 
 const useStyles = makeStyles(() => ({
   root: {

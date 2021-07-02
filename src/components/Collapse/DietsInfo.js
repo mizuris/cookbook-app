@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, makeStyles } from "@material-ui/core";
-import CustomChip from "../../CustomChip/CustomChip";
+import CustomChip from "../CustomChip/CustomChip";
 
 const useStyles = makeStyles(() => ({
   root: {

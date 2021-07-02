@@ -4,11 +4,11 @@ import { List, ListItem } from "@material-ui/core";
 import FavoriteRecipe from "./FavoriteRecipe";
 import { motion, AnimatePresence } from "framer-motion";
 
-function FavoritesList({ favListRef }) {
+function FavoritesList() {
   const favorites = useSelector((state) => state.favorites);
 
   return (
-    <List ref={favListRef}>
+    <List id="favorites-list">
       <AnimatePresence>
         {favorites.length &&
           favorites.map((recipe) => {
@@ -20,7 +20,7 @@ function FavoritesList({ favListRef }) {
                 component={motion.div}
                 initial={{ x: "-100%" }}
                 animate={{ x: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.3 }}
                 exit={{ opacity: 0 }}
               >
                 <FavoriteRecipe recipe={recipe} />

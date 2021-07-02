@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
 import AppLoader from "./components/Loader/AppLoader";
 import TopBar from "./components/TopBar/TopBar";
@@ -22,8 +22,6 @@ const useStyles = makeStyles(() => ({
 
 function App() {
   const classes = useStyles();
-  const topRef = useRef(null);
-  const favListRef = useRef(null);
 
   // Loading screen
   const [loadingScreen, setLoadingScreen] = useState(true);
@@ -44,12 +42,12 @@ function App() {
 
   // App content render
   return (
-    <div className={classes.app} ref={topRef}>
-      <TopBar scrollTopRef={topRef} scrollFavsRef={favListRef} />
+    <div className={classes.app} id="app">
+      <TopBar />
       <main className={classes.appContainer}>
         <RecipeGetForm changeLoadingState={changeLoadingState} />
         <Recipes recipesLoading={recipesLoading} />
-        <Favorites favListRef={favListRef} />
+        <Favorites />
       </main>
       <Error />
     </div>
