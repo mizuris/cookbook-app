@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/cookbook-app/static/css/main.3cbefe1f.chunk.css",
-    "main.js": "/cookbook-app/static/js/main.63b6512a.chunk.js",
-    "main.js.map": "/cookbook-app/static/js/main.63b6512a.chunk.js.map",
-    "runtime-main.js": "/cookbook-app/static/js/runtime-main.c632e02d.js",
-    "runtime-main.js.map": "/cookbook-app/static/js/runtime-main.c632e02d.js.map",
-    "static/js/2.c7ec3016.chunk.js": "/cookbook-app/static/js/2.c7ec3016.chunk.js",
-    "static/js/2.c7ec3016.chunk.js.map": "/cookbook-app/static/js/2.c7ec3016.chunk.js.map",
-    "static/js/3.085e8499.chunk.js": "/cookbook-app/static/js/3.085e8499.chunk.js",
-    "static/js/3.085e8499.chunk.js.map": "/cookbook-app/static/js/3.085e8499.chunk.js.map",
+    "main.css": "/cookbook-app/static/css/main.a6e6757a.chunk.css",
+    "main.js": "/cookbook-app/static/js/main.82b9fa5c.chunk.js",
+    "main.js.map": "/cookbook-app/static/js/main.82b9fa5c.chunk.js.map",
+    "runtime-main.js": "/cookbook-app/static/js/runtime-main.b6fc3627.js",
+    "runtime-main.js.map": "/cookbook-app/static/js/runtime-main.b6fc3627.js.map",
+    "static/js/2.94bbea1c.chunk.js": "/cookbook-app/static/js/2.94bbea1c.chunk.js",
+    "static/js/2.94bbea1c.chunk.js.map": "/cookbook-app/static/js/2.94bbea1c.chunk.js.map",
+    "static/js/3.96fce0e9.chunk.js": "/cookbook-app/static/js/3.96fce0e9.chunk.js",
+    "static/js/3.96fce0e9.chunk.js.map": "/cookbook-app/static/js/3.96fce0e9.chunk.js.map",
     "index.html": "/cookbook-app/index.html",
-    "static/css/main.3cbefe1f.chunk.css.map": "/cookbook-app/static/css/main.3cbefe1f.chunk.css.map",
-    "static/js/2.c7ec3016.chunk.js.LICENSE.txt": "/cookbook-app/static/js/2.c7ec3016.chunk.js.LICENSE.txt",
+    "static/css/main.a6e6757a.chunk.css.map": "/cookbook-app/static/css/main.a6e6757a.chunk.css.map",
+    "static/js/2.94bbea1c.chunk.js.LICENSE.txt": "/cookbook-app/static/js/2.94bbea1c.chunk.js.LICENSE.txt",
     "static/media/cookbook_icon_white.5e314e67.png": "/cookbook-app/static/media/cookbook_icon_white.5e314e67.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.c632e02d.js",
-    "static/js/2.c7ec3016.chunk.js",
-    "static/css/main.3cbefe1f.chunk.css",
-    "static/js/main.63b6512a.chunk.js"
+    "static/js/runtime-main.b6fc3627.js",
+    "static/js/2.94bbea1c.chunk.js",
+    "static/css/main.a6e6757a.chunk.css",
+    "static/js/main.82b9fa5c.chunk.js"
   ]
 }
