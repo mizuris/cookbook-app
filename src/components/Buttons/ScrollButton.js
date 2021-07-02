@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles, Typography, IconButton } from "@material-ui/core";
 import { ArrowUpwardRounded } from "@material-ui/icons";
+import { Link } from "react-scroll";
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -9,24 +10,18 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function ScrollButton({ scrollRef, closeCollapse }) {
+function ScrollButton({ closeCollapse, id }) {
   const classes = useStyles();
-  const scrollTop = () =>
-    scrollRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
 
   return (
-    <div className={classes.container}>
-      <IconButton
-        size="medium"
-        onClick={() => {
-          scrollTop();
-          closeCollapse();
-        }}
-      >
-        <Typography variant="button">Back to top</Typography>
-        <ArrowUpwardRounded />
-      </IconButton>
-    </div>
+    <Link to={id} smooth={true}>
+      <div className={classes.container}>
+        <IconButton size="medium" onClick={closeCollapse}>
+          <Typography variant="button">Back to top</Typography>
+          <ArrowUpwardRounded />
+        </IconButton>
+      </div>
+    </Link>
   );
 }
 

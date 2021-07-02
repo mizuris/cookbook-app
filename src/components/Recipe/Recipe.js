@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Card, CardActions, Collapse, makeStyles } from "@material-ui/core";
 import Title from "./Title";
 import Image from "./Image";
@@ -16,7 +16,6 @@ const useStyles = makeStyles(() => ({
 
 function Recipe({ recipe }) {
   const classes = useStyles();
-  const scrollRef = useRef();
   const [expanded, setExpanded] = useState(false);
 
   // Expand handler for recipe details
@@ -25,26 +24,19 @@ function Recipe({ recipe }) {
   };
 
   return (
-    <>
-      <div ref={scrollRef}></div>
-      <Card className={classes.root} raised={expanded}>
-        <Title title={recipe.title} />
-        <CloseButton id={recipe.id} />
-        <Image image={recipe.image} />
-        <CardActions disableSpacing>
-          <FavoriteButton recipe={recipe} />
-          <ShareButton sourceUrl={recipe.sourceUrl} />
-          <ExpandButton expanded={expanded} handleExpand={handleExpand} />
-        </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <RecipeCollapse
-            recipe={recipe}
-            closeCollapse={handleExpand}
-            scrollRef={scrollRef}
-          />
-        </Collapse>
-      </Card>
-    </>
+    <Card className={classes.root} raised={expanded} id={recipe.id}>
+      <Title title={recipe.title} />
+      <CloseButton id={recipe.id} />
+      <Image image={recipe.image} />
+      <CardActions disableSpacing>
+        <FavoriteButton recipe={recipe} />
+        <ShareButton sourceUrl={recipe.sourceUrl} />
+        <ExpandButton expanded={expanded} handleExpand={handleExpand} />
+      </CardActions>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <RecipeCollapse recipe={recipe} closeCollapse={handleExpand} />
+      </Collapse>
+    </Card>
   );
 }
 

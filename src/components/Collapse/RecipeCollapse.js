@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function RecipeCollapse({ recipe, scrollRef, closeCollapse }) {
+function RecipeCollapse({ recipe, closeCollapse }) {
   const classes = useStyles();
   const { readyInMinutes, aggregateLikes, summary, analyzedInstructions } =
     recipe;
@@ -49,7 +49,7 @@ function RecipeCollapse({ recipe, scrollRef, closeCollapse }) {
       <Divider />
       <Typography className={classes.sectionDivider}>Preparation:</Typography>
       <Instructions instructions={analyzedInstructions} />
-      <ScrollButton scrollRef={scrollRef} closeCollapse={closeCollapse} />
+      <ScrollButton id={recipe.id} closeCollapse={closeCollapse} />
     </CardContent>
   );
 }
